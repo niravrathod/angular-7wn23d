@@ -19,7 +19,8 @@ export class AppComponent {
             {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'},
             {text: 'Expand the Row', target: '.e-content', id: 'expandrow'},
             { text: 'Collapse All', target: '.e-headercontent', id: 'collapseall' },
-            { text: 'Expand All', target: '.e-headercontent', id: 'expandall' }
+            { text: 'Expand All', target: '.e-headercontent', id: 'expandall' },
+            { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' }
          ]
     }
     contextMenuOpen (arg?: BeforeOpenCloseEventArgs): void {
@@ -44,9 +45,11 @@ export class AppComponent {
         } else {
           let len = this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
           if (len !== 0) {
-             document.querySelectorAll('li#collapseall')[0].setAttribute('style', 'display: block;');
+            document.querySelectorAll('li#collapseall')[0].setAttribute('style', 'display: block;');
+            document.querySelectorAll('li#freezeleft')[0].setAttribute('style', 'display: block;');
           } else {
             document.querySelectorAll('li#expandall')[0].setAttribute('style', 'display: block;');
+            document.querySelectorAll('li#freezeleft')[0].setAttribute('style', 'display: block;');
           }
         }
     }
@@ -59,6 +62,12 @@ export class AppComponent {
           this.treegrid.collapseAll();
         } else if (args.item.id === 'expandall') {
           this.treegrid.expandAll();
+        } else if (args.item.id === 'freezeleft') {
+          if(args.column.field != null && args.column.field!==undefined)
+          {
+            this.treegrid.getColumnByField(args.column.field).freeze = 'Left'; 
+            // console.log(args.column.field);
+          }
         }
     }
 }
