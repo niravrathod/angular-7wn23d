@@ -66,6 +66,7 @@ export class AppComponent {
           if(args.column.field != null && args.column.field!==undefined)
           {
             this.treegrid.getColumnByField(args.column.field).freeze = 'Left'; 
+            this.treegrid.refreshColumns();
             // console.log(args.column.field);
           }
         }
