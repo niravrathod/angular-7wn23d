@@ -1,14 +1,17 @@
 <div class="control-section">
         <ejs-treegrid #treegrid [dataSource]='data' height='400' childMapping='subtasks' [treeColumnIndex]='1' [contextMenuItems]='contextMenuItems' (contextMenuOpen)="contextMenuOpen($event)" (contextMenuClick)="contextMenuClick($event)">
             <e-columns>
-                <e-column field='taskID' headerText='Task ID' width='80' textAlign='Right'  editType= 'numericedit'></e-column>
-                <e-column field='taskName' headerText='Task Name' width='210'></e-column>
-                <e-column field='startDate' headerText='Start Date' width='100' format="yMd" textAlign='Right' editType= 'datepickeredit'></e-column>
-                <e-column field='endDate' headerText='End Date' width='100' format="yMd" textAlign='Right' editType= 'datepickeredit'></e-column>
-                <e-column field='duration' headerText='Duration' width='80' textAlign='Right' editType= 'numericedit'></e-column>
-                <e-column field='progress' headerText='Progress' width='80' textAlign='Right' editType= 'numericedit'></e-column>
-                <e-column field='priority' headerText='Priority' width='90' editType= 'numericedit'></e-column>
+                <e-column freeze='Center' field='taskID' headerText='Task ID' width='80' textAlign='Right'  editType= 'numericedit'></e-column>
+                <e-column freeze='Center' field='taskName' headerText='Task Name' width='210'></e-column>
+                <e-column freeze='Center' field='startDate' headerText='Start Date' width='100' format="yMd" textAlign='Right' editType= 'datepickeredit'></e-column>
+                <e-column freeze='Center' field='endDate' headerText='End Date' width='100' format="yMd" textAlign='Right' editType= 'datepickeredit'></e-column>
+                <e-column freeze='Center' field='duration' headerText='Duration' width='80' textAlign='Right' editType= 'numericedit'></e-column>
+                <e-column freeze='Center' field='progress' headerText='Progress' width='80' textAlign='Right' editType= 'numericedit'></e-column>
+                <e-column freeze='Center' field='priority' headerText='Priority' width='90' editType= 'numericedit'></e-column>
             </e-columns>
         </ejs-treegrid>
+        <ejs-dialog #alertDialog [buttons]='dlgButtons' [header]='header' [animationSettings]='animationSettings'
+        [content]='content' [showCloseIcon]='showCloseIcon' [target]='target' [width]='width' [visible]='visible'>
+        </ejs-dialog>
  </div>
     
