@@ -17,7 +17,7 @@ import { TreeGridAllModule } from '@syncfusion/ej2-angular-treegrid';
 import { HttpModule } from '@angular/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
@@ -26,6 +26,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
-@NgModule({ declarations: [ AppComponent ], imports: [ CommonModule, HttpModule, TreeGridAllModule,       NumericTextBoxAllModule, ToolbarModule, DropDownListAllModule, ButtonAllModule, DialogModule, MultiSelectAllModule, CheckBoxAllModule, ReactiveFormsModule, FormsModule, DatePickerModule, SparklineAllModule, BrowserModule], providers: [], bootstrap: [AppComponent]
+@NgModule({ declarations: [ AppComponent ], imports: [ CommonModule, HttpModule, TreeGridAllModule,       NumericTextBoxAllModule, ToolbarModule, DropDownListAllModule, ButtonAllModule, DialogModule, MultiSelectAllModule, CheckBoxAllModule, DateRangePickerModule,ReactiveFormsModule, FormsModule, DatePickerModule, SparklineAllModule, BrowserModule], providers: [], bootstrap: [AppComponent]
 })
 export class AppModule { }

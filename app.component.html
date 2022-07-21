@@ -1,17 +1,116 @@
 <div class="control-section">
-        <ejs-treegrid #treegrid [dataSource]='data' height='400' childMapping='subtasks' [treeColumnIndex]='1' [contextMenuItems]='contextMenuItems' (contextMenuOpen)="contextMenuOpen($event)" (contextMenuClick)="contextMenuClick($event)">
-            <e-columns>
-                <e-column freeze='Center' field='taskID' headerText='Task ID' width='80' textAlign='Right'  editType= 'numericedit'></e-column>
-                <e-column freeze='Center' field='taskName' headerText='Task Name' width='210'></e-column>
-                <e-column freeze='Center' field='startDate' headerText='Start Date' width='100' format="yMd" textAlign='Right' editType= 'datepickeredit'></e-column>
-                <e-column freeze='Center' field='endDate' headerText='End Date' width='100' format="yMd" textAlign='Right' editType= 'datepickeredit'></e-column>
-                <e-column freeze='Center' field='duration' headerText='Duration' width='80' textAlign='Right' editType= 'numericedit'></e-column>
-                <e-column freeze='Center' field='progress' headerText='Progress' width='80' textAlign='Right' editType= 'numericedit'></e-column>
-                <e-column freeze='Center' field='priority' headerText='Priority' width='90' editType= 'numericedit'></e-column>
-            </e-columns>
-        </ejs-treegrid>
-        <ejs-dialog #alertDialog [buttons]='dlgButtons' [header]='header' [animationSettings]='animationSettings'
-        [content]='content' [showCloseIcon]='showCloseIcon' [target]='target' [width]='width' [visible]='visible'>
-        </ejs-dialog>
- </div>
-    
+  <ejs-treegrid
+    #treegrid
+    [dataSource]="data"
+    height="400"
+    childMapping="subtasks"
+    [treeColumnIndex]="1"
+    [contextMenuItems]="contextMenuItems"
+    (contextMenuOpen)="contextMenuOpen($event)"
+    (contextMenuClick)="contextMenuClick($event)"
+  >
+    <e-columns>
+      <e-column
+        freeze="Center"
+        field="taskID"
+        headerText="Task ID"
+        width="80"
+        textAlign="Right"
+        editType="numericedit"
+      ></e-column>
+      <e-column
+        freeze="Center"
+        field="taskName"
+        headerText="Task Name"
+        width="210"
+      ></e-column>
+      <e-column
+        freeze="Center"
+        field="startDate"
+        headerText="Start Date"
+        width="100"
+        format="yMd"
+        textAlign="Right"
+        editType="datepickeredit"
+      ></e-column>
+      <e-column
+        freeze="Center"
+        field="endDate"
+        headerText="End Date"
+        width="100"
+        format="yMd"
+        textAlign="Right"
+        editType="datepickeredit"
+      ></e-column>
+      <e-column
+        freeze="Center"
+        field="duration"
+        headerText="Duration"
+        width="80"
+        textAlign="Right"
+        editType="numericedit"
+      ></e-column>
+      <e-column
+        freeze="Center"
+        field="progress"
+        headerText="Progress"
+        width="80"
+        textAlign="Right"
+        editType="numericedit"
+      ></e-column>
+      <e-column
+        freeze="Center"
+        field="priority"
+        headerText="Priority"
+        width="90"
+        editType="numericedit"
+      ></e-column>
+    </e-columns>
+  </ejs-treegrid>
+  <ejs-dialog
+    #alertDialog
+    [buttons]="dlgButtons"
+    [header]="header"
+    [animationSettings]="animationSettings"
+    [content]="content"
+    [showCloseIcon]="showCloseIcon"
+    [target]="target"
+    [width]="width"
+    [visible]="visible"
+  >
+  </ejs-dialog>
+  
+
+  <div class="col-lg-12">
+    <div class="control_wrapper" id="control_wrapper" style="margin: 10px auto;">
+     <ejs-dialog id="newcolumnDialog" #newcolumnDialog width= 'new_column_width'
+      [showCloseIcon]='new_column_showCloseIcon' [animationSettings]="new_column_animationSettings" [header]="new_column_header" [visible]="new_column_visible" target='.control-section'>
+        <!-- <ng-template #content> -->
+            <form #newcolForm="ngForm" (ngSubmit)="addNewCol(newcolForm.value)"  novalidate>
+                <div class="form-group" style="padding-top: 11px;">
+                    <div class="e-float-input">
+                        <input type="text" id="column_name" #column_nameval='ngModel' name="column_name" required ngModel>
+                        <span class="e-float-line"></span>
+                        <label class="e-float-text e-label-top" for="column_name">Column Name</label>
+                        <div *ngIf="(column_nameval.invalid && (column_nameval.dirty || column_nameval.touched))">
+                            <div class="e-error" *ngIf="column_nameval.errors.required">
+                                * Enter column name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-top: 11px;">
+                    <div class="submitBtn">
+                        <button class="submit-btn e-btn e-success" id="submit-btn" [disabled]="newcolForm.invalid" type="submit">Save</button>
+                        &nbsp;<button class="close-btn e-btn" id="close-btn" type="button" (click)= "closeNewCol()">Close</button>
+                        <!-- <div class="desc"><span>*This button is not a submit type and the form submit handled from externally.</span></div> -->
+                    </div>
+                </div>
+            </form>
+        <!-- </ng-template> -->
+      </ejs-dialog>
+
+</div>
+</div>
+
+</div>

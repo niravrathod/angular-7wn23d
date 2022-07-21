@@ -1,23 +1,28 @@
-import { Component, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild,ViewEncapsulation } from '@angular/core';
 import { sampleData } from './jsontreegriddata';
 import { TreeGridComponent,FreezeService} from '@syncfusion/ej2-angular-treegrid';
 import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { BeforeOpenCloseEventArgs } from '@syncfusion/ej2-inputs';
 import { MenuEventArgs } from '@syncfusion/ej2-navigations';
 import { DialogComponent, ButtonPropsModel } from '@syncfusion/ej2-angular-popups';
-
+import { DateRangePickerComponent } from '@syncfusion/ej2-angular-calendars';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
+import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
     encapsulation: ViewEncapsulation.None,
     providers: [ FreezeService ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     public data: Object[] = [];
     @ViewChild('alertDialog')
     public alertDialog: DialogComponent;
     @ViewChild('treegrid')
     public treegrid: TreeGridComponent;
+    @ViewChild('newcolumnDialog')
+    public newcolumnDialog: DialogComponent;
     public content: string = 'Atleast one Column should be in movable';
     public header: string = 'Frozen';
     public visible: boolean = false;
@@ -31,16 +36,36 @@ export class AppComponent {
     public len : Number = 0;
     public f_name : String = '';
 
+    //new-column
+    public new_column_header: string = 'Add New Column';
+    public new_column_visible: boolean = false;
+    public new_column_animationSettings: object = { effect: 'None' };
+    public new_column_showCloseIcon: boolean = true;
+    public new_column_target: string = '.control-section';
+    public new_column_width: string = '450px';
 
+    // new_column_form: FormGroup;
+    
+    // constructor(
+    //     private formBuilder: FormBuilder
+      
+    // ) {}
     ngOnInit(): void {
+        // this.new_column_form = this.formBuilder.group({
+        //     column_name: '',
+        // });
         this.data = sampleData;
         this.contextMenuItems= [
             {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'},
             {text: 'Expand the Row', target: '.e-content', id: 'expandrow'},
             { text: 'Collapse All', target: '.e-headercontent', id: 'collapseall' },
             { text: 'Expand All', target: '.e-headercontent', id: 'expandall' },
+            { text: 'Add New Column', target: '.e-headercontent', id: 'add_column' },
             { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' }
          ]
+    }
+    closeNewCol(): void {
+      this.newcolumnDialog.hide();   
     }
     contextMenuOpen (arg?: BeforeOpenCloseEventArgs): void {
         let elem: Element = arg.event.target as Element;
@@ -63,6 +88,8 @@ export class AppComponent {
           }
         } else {
           let len = this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
+          document.querySelectorAll('li#add_column')[0].setAttribute('style', 'display: block;');
+
           if (len !== 0) {
             document.querySelectorAll('li#collapseall')[0].setAttribute('style', 'display: block;');
             document.querySelectorAll('li#freezeleft')[0].setAttribute('style', 'display: block;');
@@ -84,14 +111,11 @@ export class AppComponent {
         } else if (args.item.id === 'freezeleft') {
           if(args.column.field != null && args.column.field!==undefined)
           {
-            //let mvblColumns: Column[] = this.treegrid.getMovableColumns();
-            
             for(var i=0;i<this.treegrid.getColumnFieldNames().length;i++)
             {
               if(args.column.field == this.treegrid.getColumnFieldNames()[i] && i == this.treegrid.getColumnFieldNames().length-1)
               {
                 //last-column prevent to freeze left
-                console.log('asdasdas');
                 this.freezed = false;
                 this.alertDialog.show();   
                 break;
@@ -107,123 +131,52 @@ export class AppComponent {
                 else
                 {
                   this.freezed = true;
-                  // for(var j=0;j<=this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field).index;j++)
-                  // {
-                    // if(this.treegrid.getMovableColumns()[i].field != null && this.treegrid.getMovableColumns()[i].field!==undefined)
-                    // {
-                    //   this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field).freeze = 'Left';
-                    // }
-                    // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[j].field).isFrozen = true;
-                    // this.treegrid.refreshColumns();
-                    // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[j+1].field).freeze = 'Left';
-                    // sleep(2500);
-                    // this.treegrid.refreshColumns();
-                    // document.querySelectorAll('e-column[field=""]')[0].setAttribute('style', 'display: block;');
-                    // console.log(document.querySelectorAll('.e-headercell')[j]);
-                    // document.querySelectorAll('.e-headercell')[j].setAttribute('freeze','Left');
-                    // if(j==this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field).index)
-                    // {
-
-                    //   // this.treegrid.refreshColumns();
-                    // }
-                    // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[j+1].field).freeze = 'Left';
-                    // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[j+2].field).freeze = 'Left';
-                    // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[j+1].field).freeze = 'Left';
-                    // this.treegrid.dataSource = this.data;
-                    // this.treegrid.refreshColumns();
-                  // }
                 }
-                // console.log(this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field));
-                // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field).freeze = 'Left';
-                // this.treegrid.refreshColumns();
               }
-              // console.log(this.treegrid.getMovableColumns()[i].field);
-
-              // this.treegrid.refreshColumns();
             }
 
             if(this.freezed==true)
             {
-              // this.treegrid.refreshColumns();
-              // console.log('HERE');
-              // console.log(this.treegrid.Columns());
-              // if(this.treegrid.getMovableColumns().length != null && this.treegrid.getMovableColumns().length != undefined)
-              // {
                 this.len = args.column.index;
                 for(var i=0;i<=this.len;i++)
                 {
-                  console.log(this.treegrid.getColumnFieldNames().length);
-                  // console.log(this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field));
-                  // this.f_name = this.treegrid.getMovableColumns()[i].field;
-                  // console.log(this.f_name);
                   this.treegrid.getColumnByField(this.treegrid.getColumnFieldNames()[i]).freeze = 'Left';
-                  // console.log(this.treegrid.getColumnFieldNames()[i]);
-                  // if(i==0)
-                  // {
-
-                  //   this.treegrid.getColumnByField('taskID').freeze = 'Left';
-                  // }
-                  // else
-                  // {
-
-                  //   this.treegrid.getColumnByField('taskName').freeze = 'Left';
-                  // }
-
-                  // for(var j=0;j<=args.column.index;j++)
-                  // {
-                  //   // if(this.treegrid.getMovableColumns()[i].field != null && this.treegrid.getMovableColumns()[i].field!==undefined)
-                  //   // {
-                  //     // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field).freeze = 'Left';
-                  //     // this.treegrid.getColumnByField('taskID').freeze = 'Left';
-                  //     // this.treegrid.getColumnByField('taskName').freeze = 'Left';
-                  //     // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[j].field).freeze = 'Left';
-                  //     // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[j+1].field).freeze = 'Left';
-                      
-                  //     // this.treegrid.getColumnByIndex(0).freeze = 'Left';
-                      
-                  //   // }
-                  // }
-  
-  
-                  // if(args.column.field == this.treegrid.getMovableColumns()[i].field)
-                  // {
-                  //   // console.log(this.treegrid.getMovableColumns()[i].field);
-                  //   // this.treegrid.getColumnByField(this.treegrid.getMovableColumns()[i].field).freeze = 'Left';
-                  // }
+          
                 }
-              // }
-              // for(var m = 0;m<2;m++)
-              // {
-              //   if(m==0)
-              //   {
-
-              //     this.treegrid.getColumnByField('taskID').freeze = 'Left';
-              //   }
-              //   else
-              //   {
-              //     this.treegrid.getColumnByField('taskName').freeze = 'Left';
-              //   }
-
-              // }
               this.treegrid.refreshColumns();
 
-              // this.treegrid.getColumnByField('taskName').freeze = 'Left';
-              // this.treegrid.refreshColumns();
-              // console.log(this.treegrid.getColumnByField('taskName').freeze);
-              // this.treegrid.refreshColumns();
             }
-            // if (mvblColumns.length === 1 && args.column.field === mvblColumns[0].field && 'Center' !== mvblColumns[0].freeze) {
-            //     this.alertDialog.show(); 
-            //     //this.refresh = false; this.directionDropDown.value = "Center"; this.directionDropDown.refresh();
-            // }
-            // else
-            // {
-            //   this.treegrid.getColumnByField(args.column.field).freeze = 'Left'; 
-            //   this.treegrid.refreshColumns();
-            //   // console.log(args.column.field);
-            // }
           }
+        } else if (args.item.id === 'add_column'){
+          // this.createForm();
+          this.newcolumnDialog.show(); 
+          // add() {
+
+            //add new column dialog popup 
+            // Pop up -> 
+            // column_name*,
+            // data_type*(text,num,date,boolean,dropdownlist),
+            // default_value*,
+            // non-blank(checkbox-true/false),
+            // minimum_column_width*(when screen shrank),
+            // font_size*,
+            // font_color*,
+            // background_color*,
+            // alignment*,
+            // text_wrap(checkbox-true/false),
+
+
+
+            // var obj = { field: "ShipCity", headerText: 'NewColumn', width: 120 };
+            // this.treegrid.columns.push(obj as any);   //you can add the columns by using the Grid columns method
+            // this.treegrid.refreshColumns();
+       
+          //  }
         }
+    }
+
+    addNewCol(new_col_form) {
+        console.log(new_col_form)
     }
 
     public alertDialogBtnClick = (): void => {
