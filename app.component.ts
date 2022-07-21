@@ -4,11 +4,12 @@ import { TreeGridComponent,FreezeService} from '@syncfusion/ej2-angular-treegrid
 import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { BeforeOpenCloseEventArgs } from '@syncfusion/ej2-inputs';
 import { MenuEventArgs } from '@syncfusion/ej2-navigations';
-import { DialogComponent, ButtonPropsModel } from '@syncfusion/ej2-angular-popups';
+import { DialogComponent, ButtonPropsModel, DialogUtility } from '@syncfusion/ej2-angular-popups';
 import { DateRangePickerComponent } from '@syncfusion/ej2-angular-calendars';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { FormsModule } from '@angular/forms';
+import * as uuid from 'uuid';
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
@@ -176,7 +177,34 @@ export class AppComponent implements OnInit {
     }
 
     addNewCol(new_col_form) {
-        console.log(new_col_form)
+      console.log(new_col_form)
+//         if(this.treegrid.getColumnFieldNames().includes(new_col_form.value.column_name))
+//         {
+//           // alert('Invalid name');
+//           // onOpenDialog = function(event: any): void {
+//             // }
+//             // new_col_form.status = "INVALID";
+//             // new_col_form.controls.column_name.status = "INVALID";
+//             // setTimeout(()=>{
+//               // DialogUtility.alert('This is an Alert Dialog!');
+// //               const zIndex = 1040 + 10 * document.querySelectorAll('.modal').length;
+// // console.log(zIndex);
+//     // $(this).css('z-index', zIndex);
+//     // setTimeout(() => $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack'));
+//               DialogUtility.alert({
+//                 title: 'Already Exist!',
+//                 content: "Column Name Already Exist!,Please Try Another Column Name!",
+//                 zIndex: 1200,
+//                 showCloseIcon: true,
+//                 closeOnEscape: true,
+//                 animationSettings: { effect: 'Zoom' }
+//             });
+//             // },1000);
+//           return false;
+//         }
+        var obj = { field: uuid.v4(), headerText: new_col_form.value.column_name, width: 120 };
+        this.treegrid.columns.push(obj as any);   //you can add the columns by using the Grid columns method
+        this.treegrid.refreshColumns();
     }
 
     public alertDialogBtnClick = (): void => {
