@@ -44,7 +44,14 @@ export class AppComponent implements OnInit {
     public new_column_showCloseIcon: boolean = true;
     public new_column_target: string = '.control-section';
     public new_column_width: string = '450px';
-
+    public data_type: string[] = [
+        'Text', 'Number', 'Date',
+        'Boolean' , 'Drop Down List'
+    ];
+    private data_type_json: object[] = {
+        "Text":"stringedit", 'Number':"numericedit", 'Date':"dateedit",
+        'Boolean':"booleanedit" , 'Drop Down List':"dropdownedit"
+    };
     // new_column_form: FormGroup;
     
     // constructor(
@@ -202,7 +209,8 @@ export class AppComponent implements OnInit {
 //             // },1000);
 //           return false;
 //         }
-        var obj = { field: uuid.v4(), headerText: new_col_form.value.column_name, width: 120 };
+
+        var obj = { field: uuid.v4(), headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: 120 };
         this.treegrid.columns.push(obj as any);   //you can add the columns by using the Grid columns method
         this.treegrid.refreshColumns();
     }
