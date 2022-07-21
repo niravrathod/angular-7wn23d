@@ -213,6 +213,17 @@ export class AppComponent implements OnInit {
         var obj = { field: uuid.v4(), headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: 120 };
         this.treegrid.columns.push(obj as any);   //you can add the columns by using the Grid columns method
         this.treegrid.refreshColumns();
+        this.newcolumnDialog.hide(); 
+        DialogUtility.alert({
+            title: 'Success',
+            content: "Column Added Sucessfully!",
+            // zIndex: 1200,
+            showCloseIcon: true,
+            closeOnEscape: true,
+            animationSettings: { effect: 'Zoom' }
+        });
+
+
     }
 
     public alertDialogBtnClick = (): void => {

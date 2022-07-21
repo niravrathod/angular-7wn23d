@@ -102,7 +102,7 @@
                 <div class="form-group" style="padding-top: 11px;">
                     <label class="e-label-top" for="data_type">Data Type <span class="e-error">*</span></label>
                     <ejs-dropdownlist name="data_type" #book='ngModel' [(ngModel)]='newcolForm.data_type'
-                                [dataSource]='data_type' placeholder='Select Data Type' floatLabelType='Auto'>
+                                [dataSource]='data_type' placeholder='Select Data Type' floatLabelType='Auto' required="true">
                             </ejs-dropdownlist>
                     <!-- <div class="e-float-input">
                         <input type="text" id="data_type" #data_typeval='ngModel' name="data_type" required ngModel>
