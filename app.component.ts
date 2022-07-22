@@ -45,6 +45,9 @@ export class AppComponent implements OnInit {
     public new_column_showCloseIcon: boolean = true;
     public new_column_target: string = '.control-section';
     public new_column_width: string = '450px';
+    public alignment: string[] = [
+      'Center', 'Left', 'Right'
+  ];
     public data_type: string[] = [
         'Text', 'Number', 'Date',
         'Boolean' , 'Drop Down List'

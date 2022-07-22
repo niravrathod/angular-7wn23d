@@ -149,6 +149,12 @@
                   <label class="e-label-top" for="background_color">Background Color <span class="e-error">*</span></label>
                   <input ejs-colorpicker type="color" id="background_color" #background_colorval='ngModel' name="background_color" required ngModel>
               </div>
+              <div class="form-group" style="padding-top: 11px;">
+                <label class="e-label-top" for="alignment">Alignment <span class="e-error">*</span></label>
+                <ejs-dropdownlist name="alignment" #book='ngModel' [(ngModel)]='newcolForm.alignment'
+                            [dataSource]='alignment' placeholder='Select Alignment' floatLabelType='Auto' required="true">
+                        </ejs-dropdownlist>
+            </div>
                 <div class="form-group" style="padding-top: 11px;">
                     <div class="submitBtn">
                         <button class="submit-btn e-btn e-success" id="submit-btn" [disabled]="newcolForm.invalid" type="submit">Save</button>
