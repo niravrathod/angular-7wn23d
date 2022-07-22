@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
     public alertDialog: DialogComponent;
     @ViewChild('treegrid')
     public treegrid: TreeGridComponent;
+    public treegridColumns: any;
     @ViewChild('newcolumnDialog')
     public newcolumnDialog: DialogComponent;
     public content: string = 'Atleast one Column should be in movable';
@@ -72,6 +73,18 @@ export class AppComponent implements OnInit {
             { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' }
          ]
     }
+    ngAfterViewInit(){
+          this.treegridColumns = [{ field: "taskID", isPrimaryKey: "true", headerText: "Task ID", width: "90" },
+        { field: "taskName", headerText: "Task Name", width: "200"},
+        { field: "startDate", headerText: "Start Date", width: "100",format:"yMd"},
+        { field: "endDate", headerText: "End Date", width: "100",format:"yMd"},
+        { field: "progress", headerText: "Progress", width: "100"},
+        { field: "duration", headerText: "Duration", width: "100"},
+        { field: "priority", headerText: "Priority", width: "100"},
+      ];
+        // { headerText: "taskName", width: "90", template: this.temp1}];
+        
+    }
     closeNewCol(): void {
       this.newcolumnDialog.hide();   
     }
@@ -106,6 +119,32 @@ export class AppComponent implements OnInit {
             document.querySelectorAll('li#freezeleft')[0].setAttribute('style', 'display: block;');
           }
         }
+    }
+    newcolumnonChange(args,newcolForm): void {
+      console.log(args);
+      console.log(newcolForm);
+      switch(args.value){
+        case 'Text':
+          console.log('im here');
+          // document.querySelectorAll('#default_value')[0].setAttribute('style', 'display: block;');
+          console.log(document.querySelectorAll('#default_value'))
+
+          // var img = document.createElement('img');
+          // img.setAttribute('src', 'http://www.google.com/images/nav_logo29.png');
+          // img.setAttribute('ID', el.getAttribute('id'));
+          // var parent = el.parentNode;
+          // parent.appendChild(img);
+          // parent.removeChild(el);
+
+          break;
+      }
+        // let element: HTMLElement = document.createElement('p');
+        // if (args.isInteracted) {
+        //     element.innerText = 'Changes happened by Interaction';
+        // } else {
+        //     element.innerText = 'Changes happened by programmatic';
+        // }
+        // document.getElementById('event').append(element);
     }
     contextMenuClick (args?: MenuEventArgs): void {
         if (args.item.id === 'collapserow') {

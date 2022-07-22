@@ -4,12 +4,13 @@
     [dataSource]="data"
     height="400"
     childMapping="subtasks"
-    [treeColumnIndex]="1"
+    [treeColumnIndex]="0"
     [contextMenuItems]="contextMenuItems"
     (contextMenuOpen)="contextMenuOpen($event)"
     (contextMenuClick)="contextMenuClick($event)"
+    [columns]="treegridColumns"
   >
-    <e-columns>
+    <!-- <e-columns>
       <e-column
         freeze="Center"
         field="taskID"
@@ -65,7 +66,7 @@
         width="90"
         editType="numericedit"
       ></e-column>
-    </e-columns>
+    </e-columns> -->
   </ejs-treegrid>
   <ejs-dialog
     #alertDialog
@@ -102,19 +103,15 @@
                 <div class="form-group" style="padding-top: 11px;">
                     <label class="e-label-top" for="data_type">Data Type <span class="e-error">*</span></label>
                     <ejs-dropdownlist name="data_type" #book='ngModel' [(ngModel)]='newcolForm.data_type'
-                                [dataSource]='data_type' placeholder='Select Data Type' floatLabelType='Auto' required="true">
+                                [dataSource]='data_type' placeholder='Select Data Type' floatLabelType='Auto' (change)='newcolumnonChange($event,newcolForm)' required="true">
                             </ejs-dropdownlist>
-                    <!-- <div class="e-float-input">
-                        <input type="text" id="data_type" #data_typeval='ngModel' name="data_type" required ngModel>
-                        <span class="e-float-line"></span>
-                        <label class="e-float-text e-label-top" for="data_type">Data Type <span class="e-error">*</span></label>
-                        <div *ngIf="(data_typeval.invalid && (data_typeval.dirty || data_typeval.touched))">
-                            <div class="e-error" *ngIf="data_typeval.errors.required">
-                                * Enter data type
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
+                <div class="form-group" style="padding-top: 11px;">
+                  <div class="e-float-input">
+                    <label class="e-label-top" for="default_value">Default Value <span class="e-error">*</span></label>
+                      <input type="text" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
+                  </div>
+              </div>
                 <div class="form-group" style="padding-top: 11px;">
                     <div class="submitBtn">
                         <button class="submit-btn e-btn e-success" id="submit-btn" [disabled]="newcolForm.invalid" type="submit">Save</button>
