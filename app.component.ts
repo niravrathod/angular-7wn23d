@@ -145,7 +145,7 @@ export class AppComponent implements OnInit {
           this.new_column_list = false;   
           this.new_column_number = true;   
           break;
-        case 'Bool':
+        case 'Boolean':
           this.new_column_text = false;   
           this.new_column_number = false;   
           this.new_column_date = false;   
