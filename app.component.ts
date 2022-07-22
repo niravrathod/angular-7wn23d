@@ -53,6 +53,13 @@ export class AppComponent implements OnInit {
         "Text":"stringedit", 'Number':"numericedit", 'Date':"dateedit",
         'Boolean':"booleanedit" , 'Drop Down List':"dropdownedit"
     };
+
+    public new_column_text: boolean = false;
+    public new_column_number: boolean = false;
+    public new_column_bool: boolean = false;
+    public new_column_date: boolean = false;
+    public new_column_list: boolean = false;
+
     // new_column_form: FormGroup;
     
     // constructor(
@@ -120,9 +127,9 @@ export class AppComponent implements OnInit {
           }
         }
     }
-    newcolumnonChange(args,newcolForm): void {
+    newcolumnonChange(args): void {
       console.log(args);
-      console.log(newcolForm);
+      // let necolumn: HTML
       switch(args.value){
         case 'Text':
           console.log('im here');
@@ -135,6 +142,9 @@ export class AppComponent implements OnInit {
           // var parent = el.parentNode;
           // parent.appendChild(img);
           // parent.removeChild(el);
+            break;
+        case 'Number':
+          
 
           break;
       }
