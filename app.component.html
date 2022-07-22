@@ -156,6 +156,11 @@
                         </ejs-dropdownlist>
             </div>
                 <div class="form-group" style="padding-top: 11px;">
+                  <label class="e-label-top" for="text_wrap">Text Wrap </label>
+                  <ejs-checkbox id="text_wrap" #text_wrapval='ngModel' name="text_wrap" ngModel>
+                  </ejs-checkbox>
+              </div>
+                <div class="form-group" style="padding-top: 11px;">
                     <div class="submitBtn">
                         <button class="submit-btn e-btn e-success" id="submit-btn" [disabled]="newcolForm.invalid" type="submit">Save</button>
                         &nbsp;<button class="close-btn e-btn" id="close-btn" type="button" (click)= "closeNewCol()">Close</button>
