@@ -132,20 +132,39 @@ export class AppComponent implements OnInit {
       // let necolumn: HTML
       switch(args.value){
         case 'Text':
-          console.log('im here');
-          // document.querySelectorAll('#default_value')[0].setAttribute('style', 'display: block;');
-          console.log(document.querySelectorAll('#default_value'))
-
-          // var img = document.createElement('img');
-          // img.setAttribute('src', 'http://www.google.com/images/nav_logo29.png');
-          // img.setAttribute('ID', el.getAttribute('id'));
-          // var parent = el.parentNode;
-          // parent.appendChild(img);
-          // parent.removeChild(el);
-            break;
+          this.new_column_number = false;   
+          this.new_column_bool = false;  
+          this.new_column_date = false;   
+          this.new_column_list = false;   
+          this.new_column_text = true;
+          break;
         case 'Number':
-          
-
+          this.new_column_text = false;   
+          this.new_column_bool = false; 
+          this.new_column_date = false;   
+          this.new_column_list = false;   
+          this.new_column_number = true;   
+          break;
+        case 'Bool':
+          this.new_column_text = false;   
+          this.new_column_number = false;   
+          this.new_column_date = false;   
+          this.new_column_list = false;   
+          this.new_column_bool = true;   
+          break;
+        case 'Date':
+          this.new_column_text = false;   
+          this.new_column_number = false;   
+          this.new_column_bool = false;   
+          this.new_column_list = false;   
+          this.new_column_date = true;   
+          break;
+        case 'Drop Down List':
+          this.new_column_text = false;   
+          this.new_column_number = false;   
+          this.new_column_bool = false;   
+          this.new_column_date = false;   
+          this.new_column_list = true;   
           break;
       }
         // let element: HTMLElement = document.createElement('p');

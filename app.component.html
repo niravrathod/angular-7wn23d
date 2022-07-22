@@ -110,8 +110,20 @@
                   <div class="e-float-input" id="default_value_div">
                     <label class="e-label-top" for="default_value">Default Value <span class="e-error">*</span></label>
                       <!-- <input type="text" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel> -->
-                      <ejs-textbox id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
+                      <ejs-textbox *ngIf="new_column_text" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
                       </ejs-textbox>
+
+                      <ejs-numerictextbox *ngIf="new_column_number" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
+                      </ejs-numerictextbox>
+
+                      <ejs-checkbox *ngIf="new_column_bool" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
+                      </ejs-checkbox>
+
+                      <ejs-datepicker *ngIf="new_column_date" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
+                      </ejs-datepicker>
+
+                      <ejs-multiselect *ngIf="new_column_list" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel allowCustomValue
+='true'            ></ejs-multiselect>
                   </div>
               </div>
                 <div class="form-group" style="padding-top: 11px;">
