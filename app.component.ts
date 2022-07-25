@@ -99,7 +99,7 @@ export class AppComponent implements OnInit {
          ]
     }
     ngAfterViewInit(){
-          this.treegridColumns = [{ field: "taskID", isPrimaryKey: "true", headerText: "Task ID", width: "90",'customAttributes':{class:'cssClassaa'} },
+          this.treegridColumns = [/* { field: "taskID", isPrimaryKey: "true", headerText: "Task ID", width: "90",'customAttributes':{class:'cssClassaa'} } */{ field: "taskID", isPrimaryKey: "true", headerText: "Task ID", width: "90" },
         { field: "taskName", headerText: "Task Name", width: "200"},
         { field: "startDate", headerText: "Start Date", width: "100",format:"yMd"},
         { field: "endDate", headerText: "End Date", width: "100",format:"yMd"},
