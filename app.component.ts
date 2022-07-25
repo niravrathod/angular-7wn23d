@@ -361,7 +361,7 @@ export class AppComponent implements OnInit {
 
     public delalertDialogBtnClick = (args:any): void => {
       // console.log(this.treegrid.columns);
-      console.log(this.del_column);
+      // console.log(this.del_column);
       // this.del_column
       this.treegrid.columns.filter((i,x) => {  
           if(i.field == this.del_column) { 
