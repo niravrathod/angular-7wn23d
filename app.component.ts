@@ -489,7 +489,7 @@ export class AppComponent implements OnInit {
     if(this.can_be_deleted==true)
     {
       this.treegrid.columns.filter((i,x) => {
-          if(i.freeze==undefined && i.field == this.del_column) {
+          if(i.field == this.del_column) {
             this.treegrid.columns.splice(x,1);
             this.treegrid.refreshColumns();
 
