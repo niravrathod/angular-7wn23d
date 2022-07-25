@@ -301,7 +301,13 @@ export class AppComponent implements OnInit {
         // color: white;
         // font-family: 'Bell MT';
         // font-size: '20px';
-        var obj = { 'background-color': new_col_form.value.default_value,DefaultValue:new_col_form.value.default_value,field: uuid.v4(), headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: new_col_form.value.minimum_col_width };
+        const uid = uuid.v4();
+        var style = document.createElement('style');
+        style.type="text/css";
+        style.innerHTML = '.e-treegrid .e-headercell.'+uid+' { background-color:'+new_col_form.value.background_color+';color:'+new_col_form.value.font_color+';font-size:'+new_col_form.value.font_size+';}';
+        document.body.append(style);
+
+        var obj = { 'background-color': new_col_form.value.default_value,DefaultValue:new_col_form.value.default_value,field: uid, headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: new_col_form.value.minimum_col_width,textAlign:new_col_form.value.alignment,customAttributes:{ class: uid } };
         this.treegrid.columns.push(obj as any);   //you can add the columns by using the Grid columns method
         this.treegrid.refreshColumns();
         this.newcolumnDialog.hide(); 
