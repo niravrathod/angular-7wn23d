@@ -200,6 +200,9 @@ export class AppComponent implements OnInit {
       document
         .querySelectorAll('li#add_column')[0]
         .setAttribute('style', 'display: block;');
+        console.log('hello');
+        console.log(arg.column.freeze);
+
         let freeze_cnt = 0;
         let total_cnt = this.treegrid.columns.length;
         this.treegrid.columns.filter((i,x) => {
@@ -208,7 +211,8 @@ export class AppComponent implements OnInit {
               }
         });
         this.can_be_deleted = total_cnt-freeze_cnt>1?true:false;
-        console.log(arg.column.freeze);
+        console.log('1');
+
         if(arg.column.freeze==undefined && this.can_be_deleted==true)
         {
           document
