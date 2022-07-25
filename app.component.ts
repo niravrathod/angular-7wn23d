@@ -205,22 +205,22 @@ export class AppComponent implements OnInit {
         // console.log('hello');
         // console.log(arg.column.freeze);
 
-        // let freeze_cnt = 0;
-        // let total_cnt = this.treegrid.columns.length;
-        // this.treegrid.columns.filter((i,x) => {
-        //       if(i.freeze!=undefined && i.freeze!='') {
-        //         freeze_cnt++;
-        //       }
-        // });
-        // this.can_be_deleted = total_cnt-freeze_cnt==1?false:true;
+        let freeze_cnt = 0;
+        let total_cnt = this.treegrid.columns.length;
+        this.treegrid.columns.filter((i,x) => {
+              if(i.freeze!=undefined && i.freeze!='') {
+                freeze_cnt++;
+              }
+        });
+        this.can_be_deleted = total_cnt-freeze_cnt==1?false:true;
         // console.log('1');
 
-        // if(arg.column.freeze==undefined && this.can_be_deleted==true)
-        // {
+        if(this.can_be_deleted==true)
+        {
           document
           .querySelectorAll('li#delete_column')[0]
           .setAttribute('style', 'display: block;');
-        // }
+        }
       
 
       if (len !== 0) {
@@ -237,13 +237,13 @@ export class AppComponent implements OnInit {
         document
           .querySelectorAll('li#expandall')[0]
           .setAttribute('style', 'display: block;');
-        // if(arg.column.freeze==undefined && this.can_be_deleted==true)
-        // {
+        if(arg.column.freeze==undefined && this.can_be_deleted==true)
+        {
           
           document
             .querySelectorAll('li#freezeleft')[0]
             .setAttribute('style', 'display: block;');
-        // }  
+        }  
       }
     }
   }
