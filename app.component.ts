@@ -310,7 +310,7 @@ export class AppComponent implements OnInit {
         // console.log('---style-end----');
         document.body.append(style);
 
-        var obj = { DefaultValue:new_col_form.value.default_value,field: uid, headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: new_col_form.value.minimum_col_width,textAlign:new_col_form.value.alignment,customAttributes:{ class: uid } };
+        var obj = { DefaultValue:new_col_form.value.default_value,field: uid, headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],minWidth: new_col_form.value.minimum_col_width,textAlign:new_col_form.value.alignment,customAttributes:{ class: uid } };
         this.treegrid.columns.push(obj as any);   //you can add the columns by using the Grid columns method
         this.treegrid.refreshColumns();
         this.newcolumnDialog.hide(); 
