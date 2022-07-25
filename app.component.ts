@@ -216,7 +216,7 @@ export class AppComponent implements OnInit {
                 is_this_non_freeze_cnt = true;
               }
         });
-        this.can_be_deleted = total_cnt-freeze_cnt==1 && is_this_non_freeze_cnt==false?false:true;
+        this.can_be_deleted = total_cnt-freeze_cnt==1 && is_this_non_freeze_cnt==true?false:true;
         // console.log('1');
 
         if(this.can_be_deleted==true)
