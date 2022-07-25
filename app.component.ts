@@ -301,10 +301,11 @@ export class AppComponent implements OnInit {
         // color: white;
         // font-family: 'Bell MT';
         // font-size: '20px';
+        // e-headercelldiv
         const uid = uuid.v4();
         var style = document.createElement('style');
         style.type="text/css";
-        style.innerHTML = '.e-treegrid .e-headercell.'+uid+' { background-color:'+new_col_form.value.background_color+';color:'+new_col_form.value.font_color+';font-size:'+new_col_form.value.font_size+';}';
+        style.innerHTML = '.e-treegrid .e-headercell.'+uid+' { background-color:'+new_col_form.value.background_color+';color:'+new_col_form.value.font_color+';}.e-treegrid .e-headercell.'+uid+' .e-headercelldiv{font-size:'+new_col_form.value.font_size+'px;}';
         // console.log('---style-start----');
         // console.log(style);
         // console.log('---style-end----');
