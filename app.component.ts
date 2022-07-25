@@ -208,7 +208,7 @@ export class AppComponent implements OnInit {
               }
         });
         this.can_be_deleted = total_cnt-freeze_cnt>1?true:false;
-
+        console.log(arg.column.freeze);
         if(arg.column.freeze==undefined && this.can_be_deleted==true)
         {
           document
