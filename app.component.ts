@@ -206,13 +206,17 @@ export class AppComponent implements OnInit {
         // console.log(arg.column.freeze);
 
         let freeze_cnt = 0;
+        let is_this_non_freeze_cnt = false;
         let total_cnt = this.treegrid.columns.length;
         this.treegrid.columns.filter((i,x) => {
               if(i.freeze!=undefined && i.freeze!='') {
                 freeze_cnt++;
               }
+              if(i.freeze==undefined && i.field==arg.column.field) {
+                is_this_non_freeze_cnt = true;
+              }
         });
-        this.can_be_deleted = total_cnt-freeze_cnt==1?false:true;
+        this.can_be_deleted = total_cnt-freeze_cnt==1 && is_this_non_freeze_cnt==false?false:true;
         // console.log('1');
 
         if(this.can_be_deleted==true)
