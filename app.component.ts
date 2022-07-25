@@ -231,7 +231,7 @@ export class AppComponent implements OnInit {
         document
           .querySelectorAll('li#expandall')[0]
           .setAttribute('style', 'display: block;');
-        if(arg.column.freeze==null && this.can_be_deleted==true || arg.column.freeze==undefined && this.can_be_deleted==true || arg.column.freeze=='' && this.can_be_deleted==true)
+        if(arg.column.freeze==undefined && this.can_be_deleted==true)
         {
           
           document
