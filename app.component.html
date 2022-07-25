@@ -173,6 +173,39 @@
         <!-- </ng-template> -->
       </ejs-dialog>
 
+
+      <ejs-dialog id="deletecolumnDialog" #deletecolumnDialog width= 'delete_column_width'
+      [showCloseIcon]='delete_column_showCloseIcon' [animationSettings]="delete_column_animationSettings" [header]="delete_column_header" [visible]="delete_column_visible" target='.control-section'>
+        <!-- <ng-template #content> -->
+            <form #delcolForm="ngForm" (ngSubmit)="deleteCol(delcolForm)"  novalidate>
+              <div class="form-group" style="padding-top: 11px;">
+                  <label class="e-label-top e-error" for="non_blank">Are You Sure To Delete This Column? </label>
+              </div>
+                <div class="form-group" style="padding-top: 11px;">
+                    <div class="submitBtn">
+                        <button class="submit-btn e-btn e-danger" id="submit-btn" [disabled]="delcolForm.invalid" type="submit">Delete</button>
+                        &nbsp;<button class="close-btn e-btn" id="close-btn" type="button" (click)= "closeDelCol()">Close</button>
+                        <!-- <div class="desc"><span>*This button is not a submit type and the form submit handled from externally.</span></div> -->
+                    </div>
+                </div>
+            </form>
+        <!-- </ng-template> -->
+      </ejs-dialog>
+
+
+      <ejs-dialog
+      #delalertDialog
+      [buttons]="deldlgButtons"
+      [header]="del_header"
+      [animationSettings]="del_animationSettings"
+      [content]="del_content"
+      [showCloseIcon]="del_showCloseIcon"
+      [target]="del_target"
+      [width]="del_width"
+      [visible]="del_visible"
+    >
+    </ejs-dialog>
+
 </div>
 </div>
 

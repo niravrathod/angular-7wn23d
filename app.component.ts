@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
     public data: Object[] = [];
     @ViewChild('alertDialog')
     public alertDialog: DialogComponent;
+    @ViewChild('delalertDialog')
+    public delalertDialog: DialogComponent;
     @ViewChild('treegrid')
     public treegrid: TreeGridComponent;
     public treegridColumns: any;
@@ -38,6 +40,18 @@ export class AppComponent implements OnInit {
     public target: string = '.control-section';
     public width: string = '300px';
     public contextMenuItems: Object;
+
+    //Delete Column -start
+    public del_content: string = '<div class="e-error">Are You Sure To Delete This Column?</div>';
+    public del_header: string = 'Delete Column';
+    public del_visible: boolean = false;
+    public del_animationSettings: object = { effect: 'None' };
+    public del_showCloseIcon: boolean = false;
+    public del_target: string = '.control-section';
+    public del_width: string = '300px';
+    public del_column: any = '';
+    //Delete Column -end
+
 
     public len : Number = 0;
     public f_name : String = '';
@@ -96,6 +110,7 @@ export class AppComponent implements OnInit {
             { text: 'Collapse All', target: '.e-headercontent', id: 'collapseall' },
             { text: 'Expand All', target: '.e-headercontent', id: 'expandall' },
             { text: 'Add New Column', target: '.e-headercontent', id: 'add_column' },
+            { text: 'Delete Column', target: '.e-headercontent', id: 'delete_column' },
             { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' }
          ]
     }
@@ -136,6 +151,7 @@ export class AppComponent implements OnInit {
         } else {
           let len = this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
           document.querySelectorAll('li#add_column')[0].setAttribute('style', 'display: block;');
+          document.querySelectorAll('li#delete_column')[0].setAttribute('style', 'display: block;');
 
           if (len !== 0) {
             document.querySelectorAll('li#collapseall')[0].setAttribute('style', 'display: block;');
@@ -267,7 +283,11 @@ export class AppComponent implements OnInit {
             // this.treegrid.refreshColumns();
        
           //  }
+        } else if (args.item.id === 'delete_column'){
+          this.del_column = args.column.field;
+          this.delalertDialog.show();
         }
+
     }
 
     addNewCol(new_col_form) {
@@ -337,6 +357,23 @@ export class AppComponent implements OnInit {
     }
 
     public dlgButtons: ButtonPropsModel[] = [{ click: this.alertDialogBtnClick.bind(this), buttonModel: { content: 'OK', isPrimary: true } }];
+
+
+    public delalertDialogBtnClick = (args:any): void => {
+      // console.log(this.treegrid.columns);
+      // this.del_column
+      this.treegrid.columns.filter((i,x) => {  
+          if(i.field == this.del_column) { 
+            this.treegrid.columns.splice(x,1); //you can simply remove based on field name or an index of a column 
+          } 
+      });
+      this.delalertDialog.hide();
+    }
+    public delalertDialogCancelBtnClick = (args:any): void => {
+        this.delalertDialog.hide();
+    }
+
+    public deldlgButtons: ButtonPropsModel[] = [{ click: this.delalertDialogBtnClick.bind(this), buttonModel: { content: 'OK', isPrimary: true } },{ click: this.delalertDialogCancelBtnClick.bind(this), buttonModel: { content: 'Cancel', isPrimary: false } }];
     
 
 }
