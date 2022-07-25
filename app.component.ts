@@ -62,6 +62,7 @@ export class AppComponent implements OnInit {
   public del_visible: boolean = false;
   public del_animationSettings: object = { effect: 'None' };
   public del_showCloseIcon: boolean = false;
+  public can_be_deleted: boolean = false;
   public del_target: string = '.control-section';
   public del_width: string = '300px';
   public del_column: any = '';
@@ -199,9 +200,22 @@ export class AppComponent implements OnInit {
       document
         .querySelectorAll('li#add_column')[0]
         .setAttribute('style', 'display: block;');
-      document
-        .querySelectorAll('li#delete_column')[0]
-        .setAttribute('style', 'display: block;');
+        let freeze_cnt = 0;
+        let total_cnt = this.treegrid.columns.length;
+        this.treegrid.columns.filter((i,x) => {
+              if(i.freeze!=undefined && i.freeze!='') {
+                freeze_cnt++;
+              }
+        });
+        this.can_be_deleted = total_cnt-freeze_cnt>1?true:false;
+
+        if(arg.column.freeze==null && this.can_be_deleted==true || arg.column.freeze==undefined && this.can_be_deleted==true || arg.column.freeze=='' && this.can_be_deleted==true)
+        {
+          document
+          .querySelectorAll('li#delete_column')[0]
+          .setAttribute('style', 'display: block;');
+        }
+      
 
       if (len !== 0) {
         document
@@ -449,19 +463,26 @@ export class AppComponent implements OnInit {
     // this.del_column
     // const total_len = ;
     // this.treegrid.columns.filter((i, x) => {
-    //   console.log(i);
+    //   if(i.field == this.del_column) {
+
+    //   }
     //   // if()
     // });
 
-    this.treegrid.columns.filter((i,x) => {
-        if(i.field == this.del_column) {
-          this.treegrid.columns.splice(x,1);
-          this.treegrid.refreshColumns();
+    if(this.can_be_deleted==true)
+    {
+      this.treegrid.columns.filter((i,x) => {
+          if(i.freeze==undefined && i.field == this.del_column) {
+            this.treegrid.columns.splice(x,1);
+            this.treegrid.refreshColumns();
 
-          // this.treegrid.columns.splice(x,1); //you can simply remove based on field name or an index of a column
-        }
-    });
-    this.delalertDialog.hide();
+            // this.treegrid.columns.splice(x,1); //you can simply remove based on field name or an index of a column
+          }
+      });
+      this.delalertDialog.hide();
+    }
+
+    
   };
   public delalertDialogCancelBtnClick = (args: any): void => {
     this.delalertDialog.hide();
