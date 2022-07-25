@@ -361,10 +361,14 @@ export class AppComponent implements OnInit {
 
     public delalertDialogBtnClick = (args:any): void => {
       // console.log(this.treegrid.columns);
+      console.log(this.del_column);
       // this.del_column
       this.treegrid.columns.filter((i,x) => {  
           if(i.field == this.del_column) { 
-            this.treegrid.columns.splice(x,1); //you can simply remove based on field name or an index of a column 
+            this.treegrid.columns.splice(x,1);
+            this.treegrid.refreshColumns();
+
+            // this.treegrid.columns.splice(x,1); //you can simply remove based on field name or an index of a column 
           } 
       });
       this.delalertDialog.hide();
