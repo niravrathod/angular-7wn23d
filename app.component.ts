@@ -169,7 +169,7 @@ export class AppComponent implements OnInit {
     for (let i: number = 0; i < items.length; i++) {
       items[i].setAttribute('style', 'display: none;');
     }
-    console.log(arg);
+    // console.log(arg);
 
     if (elem.closest('.e-row')) {
       if (
