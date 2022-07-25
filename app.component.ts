@@ -1,4 +1,7 @@
 import { Component, OnInit, Inject, ViewChild,ViewEncapsulation } from '@angular/core';
+import {key} from './assets/config.json';
+import { ConfigService } from './config.service';
+import { SettingsService } from './settings.service';
 import { sampleData } from './jsontreegriddata';
 import { TreeGridComponent,FreezeService} from '@syncfusion/ej2-angular-treegrid';
 import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
@@ -13,6 +16,7 @@ import * as uuid from 'uuid';
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
+    styleUrls: ['app.component.css'],
     encapsulation: ViewEncapsulation.None,
     providers: [ FreezeService ]
 })
@@ -62,17 +66,28 @@ export class AppComponent implements OnInit {
     public new_column_bool: boolean = false;
     public new_column_date: boolean = false;
     public new_column_list: boolean = false;
-
+    // public config: ConfigService;
     // new_column_form: FormGroup;
+    // constructor(private config: ConfigService) {}
     
-    // constructor(
-    //     private formBuilder: FormBuilder
+    constructor(
+        private config: ConfigService
       
-    // ) {}
+    ) {}
     ngOnInit(): void {
         // this.new_column_form = this.formBuilder.group({
         //     column_name: '',
         // });
+        // console.log('1')
+        // console.log(key)
+        this.config.getData().subscribe((resp: any) => {
+          const plMonthResults = {};
+      const plMonth = resp.success ? resp.key : null;
+      delete resp.success;
+      console.log('JSON-Data:', plMonth);
+        });
+        
+        // this.data = key;
         this.data = sampleData;
         this.contextMenuItems= [
             {text: 'Collapse the Row', target: '.e-content', id: 'collapserow'},
@@ -84,7 +99,7 @@ export class AppComponent implements OnInit {
          ]
     }
     ngAfterViewInit(){
-          this.treegridColumns = [{ field: "taskID", isPrimaryKey: "true", headerText: "Task ID", width: "90" },
+          this.treegridColumns = [{ field: "taskID", isPrimaryKey: "true", headerText: "Task ID", width: "90",'customAttributes':{class:'cssClassaa'} },
         { field: "taskName", headerText: "Task Name", width: "200"},
         { field: "startDate", headerText: "Start Date", width: "100",format:"yMd"},
         { field: "endDate", headerText: "End Date", width: "100",format:"yMd"},
@@ -281,7 +296,11 @@ export class AppComponent implements OnInit {
 //           return false;
 //         }
         // DefaultValue=1000
-        var obj = { DefaultValue:new_col_form.value.default_value,field: uuid.v4(), headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: 120 };
+        // background-color: #2382c3;
+        // color: white;
+        // font-family: 'Bell MT';
+        // font-size: '20px';
+        var obj = { 'background-color': new_col_form.value.default_value,DefaultValue:new_col_form.value.default_value,field: uuid.v4(), headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: new_col_form.value.minimum_col_width };
         this.treegrid.columns.push(obj as any);   //you can add the columns by using the Grid columns method
         this.treegrid.refreshColumns();
         this.newcolumnDialog.hide(); 
@@ -302,4 +321,6 @@ export class AppComponent implements OnInit {
     }
 
     public dlgButtons: ButtonPropsModel[] = [{ click: this.alertDialogBtnClick.bind(this), buttonModel: { content: 'OK', isPrimary: true } }];
+    
+
 }

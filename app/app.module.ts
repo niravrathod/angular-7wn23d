@@ -26,6 +26,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
-@NgModule({ declarations: [ AppComponent ], imports: [ CommonModule, HttpModule, TreeGridAllModule,       ColorPickerAllModule,TextBoxAllModule,NumericTextBoxAllModule, ToolbarModule, DropDownListAllModule, ButtonAllModule, DialogModule, MultiSelectAllModule, CheckBoxAllModule, DateRangePickerModule,ReactiveFormsModule, FormsModule, DatePickerModule, SparklineAllModule, BrowserModule], providers: [], bootstrap: [AppComponent]
+import { ConfigService } from '../config.service';
+import { SettingsService } from '../settings.service';
+import { HttpClientModule } from '@angular/common/http';
+@NgModule({ declarations: [ AppComponent ], imports: [ HttpClientModule,CommonModule, HttpModule, TreeGridAllModule,       ColorPickerAllModule,TextBoxAllModule,NumericTextBoxAllModule, ToolbarModule, DropDownListAllModule, ButtonAllModule, DialogModule, MultiSelectAllModule, CheckBoxAllModule, DateRangePickerModule,ReactiveFormsModule, FormsModule, DatePickerModule, SparklineAllModule, BrowserModule], providers: [ConfigService,SettingsService], bootstrap: [AppComponent]
 })
 export class AppModule { }
