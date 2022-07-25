@@ -305,6 +305,9 @@ export class AppComponent implements OnInit {
         var style = document.createElement('style');
         style.type="text/css";
         style.innerHTML = '.e-treegrid .e-headercell.'+uid+' { background-color:'+new_col_form.value.background_color+';color:'+new_col_form.value.font_color+';font-size:'+new_col_form.value.font_size+';}';
+        // console.log('---style-start----');
+        // console.log(style);
+        // console.log('---style-end----');
         document.body.append(style);
 
         var obj = { DefaultValue:new_col_form.value.default_value,field: uid, headerText: new_col_form.value.column_name, edittype: this.data_type_json[new_col_form.value.data_type],width: new_col_form.value.minimum_col_width,textAlign:new_col_form.value.alignment,customAttributes:{ class: uid } };
