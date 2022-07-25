@@ -209,7 +209,7 @@ export class AppComponent implements OnInit {
         });
         this.can_be_deleted = total_cnt-freeze_cnt>1?true:false;
 
-        if(arg.column.freeze==null && this.can_be_deleted==true || arg.column.freeze==undefined && this.can_be_deleted==true || arg.column.freeze=='' && this.can_be_deleted==true)
+        if(arg.column.freeze==undefined && this.can_be_deleted==true)
         {
           document
           .querySelectorAll('li#delete_column')[0]
@@ -221,7 +221,7 @@ export class AppComponent implements OnInit {
         document
           .querySelectorAll('li#collapseall')[0]
           .setAttribute('style', 'display: block;');
-        if(arg.column.freeze==null && this.can_be_deleted==true || arg.column.freeze==undefined && this.can_be_deleted==true || arg.column.freeze=='' && this.can_be_deleted==true)
+        if(arg.column.freeze==undefined && this.can_be_deleted==true)
         {
           document
           .querySelectorAll('li#freezeleft')[0]
