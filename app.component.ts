@@ -80,12 +80,13 @@ export class AppComponent implements OnInit {
         // });
         // console.log('1')
         // console.log(key)
-        this.config.getData().subscribe((resp: any) => {
-          const plMonthResults = {};
-      const plMonth = resp.success ? resp.key : null;
-      delete resp.success;
-      console.log('JSON-Data:', plMonth);
-        });
+        
+      //   this.config.getData().subscribe((resp: any) => {
+      //     const plMonthResults = {};
+      // const plMonth = resp.success ? resp.key : null;
+      // delete resp.success;
+      // console.log('JSON-Data:', plMonth);
+      //   });
         
         // this.data = key;
         this.data = sampleData;
