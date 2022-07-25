@@ -3,7 +3,7 @@ import {key} from './assets/config.json';
 import { ConfigService } from './config.service';
 import { SettingsService } from './settings.service';
 import { sampleData } from './jsontreegriddata';
-import { TreeGridComponent,FreezeService} from '@syncfusion/ej2-angular-treegrid';
+import { TreeGridComponent,FreezeService,ReorderService} from '@syncfusion/ej2-angular-treegrid';
 import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { BeforeOpenCloseEventArgs } from '@syncfusion/ej2-inputs';
 import { MenuEventArgs } from '@syncfusion/ej2-navigations';
@@ -18,7 +18,7 @@ import * as uuid from 'uuid';
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
     encapsulation: ViewEncapsulation.None,
-    providers: [ FreezeService ]
+    providers: [ FreezeService,ReorderService ]
 })
 export class AppComponent implements OnInit {
     public data: Object[] = [];
