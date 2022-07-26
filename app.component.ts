@@ -161,21 +161,22 @@ export class AppComponent implements OnInit {
         isPrimaryKey: 'true',
         headerText: 'Task ID',
         width: '90',
-        type:'numericedit',
-        edittype:'numericedit'
+        // type:'numericedit',
+        editType:'numericedit'
       },
-      { field: 'taskName', headerText: 'Task Name', width: '200',edittype:'stringedit',type:'stringedit' },
+      { field: 'taskName', headerText: 'Task Name', width: '200',editType:'stringedit' },
       {
         field: 'startDate',
         headerText: 'Start Date',
         width: '100',
         format: 'yMd',
-        edittype:'datepickeredit'
+        // type:'datepickeredit',
+        editType:'datepickeredit'
       },
-      { field: 'endDate', headerText: 'End Date', width: '100', format: 'yMd',edittype:'datepickeredit' },
-      { field: 'progress', headerText: 'Progress', width: '100',edittype:'numericedit' },
-      { field: 'duration', headerText: 'Duration', width: '100',edittype:'numericedit' },
-      { field: 'priority', headerText: 'Priority', width: '100',edittype:'stringedit' },
+      { field: 'endDate', headerText: 'End Date', width: '100', format: 'yMd',editType:'datepickeredit' },
+      { field: 'progress', headerText: 'Progress', width: '100',editType:'numericedit' },
+      { field: 'duration', headerText: 'Duration', width: '100',editType:'numericedit' },
+      { field: 'priority', headerText: 'Priority', width: '100',editType:'stringedit' },
     ];
     // { headerText: "taskName", width: "90", template: this.temp1}];
   }
