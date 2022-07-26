@@ -462,6 +462,15 @@ export class AppComponent implements OnInit {
     }
   }
 
+  beforeshowedit(edit_col_form) {
+    var edit_form_value = edit_col_form.controls;
+    edit_col_form.value.column_name = 'HAHAHA';
+    edit_form_value.column_name.value = 'HAHAHA';
+    console.log(edit_form_value.column_name.value);
+    console.log(edit_col_form.value);
+    console.log(edit_col_form.controls);
+    edit_col_form.controls['column_name'].setValue('HAHAHA');
+  }
   addNewCol(new_col_form) {
     console.log(new_col_form);
     //         if(this.treegrid.getColumnFieldNames().includes(new_col_form.value.column_name))
