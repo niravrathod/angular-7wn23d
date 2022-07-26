@@ -415,9 +415,9 @@ export class AppComponent implements OnInit {
     // e-headercelldiv
     console.log(new_col_form.value.background_color);
     console.log(new_col_form.value.font_color);
-    if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '') {
-      new_col_form.value.background_color = '#FFFFFF';
-      new_col_form.value.font_color = '#000000';
+    if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '' || new_col_form.value.background_color == '#FFFFFF' && new_col_form.value.font_color == '#000000') {
+      new_col_form.value.background_color = 'white';
+      new_col_form.value.font_color = 'black';
     }
     const uid = uuid.v4();
     var style = document.createElement('style');
