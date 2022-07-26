@@ -413,16 +413,10 @@ export class AppComponent implements OnInit {
     // font-family: 'Bell MT';
     // font-size: '20px';
     // e-headercelldiv
-    let bgcolor = '#ffffff';
-    let fontcolor = '#000000';
-    if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '' || new_col_form.value.background_color == '#FFFFFF' && new_col_form.value.font_color == '#000000') {
-      // let bgcolor = '#ffffff';
-      // let fontcolor = '#000000';
-    } else {
-      // let bgcolor = new_col_form.value.background_color;
-      // let fontcolor = new_col_form.value.background_color;
-
-    }
+    if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '') {
+      new_col_form.value.background_color = '#FFFFFF';
+      new_col_form.value.font_color = '#000000';
+    } 
     const uid = uuid.v4();
     var style = document.createElement('style');
     style.type = 'text/css';
@@ -438,9 +432,9 @@ export class AppComponent implements OnInit {
       ' .e-headercelldiv{font-size:' +
       new_col_form.value.font_size +
       'px;}';
-    console.log('---style-start----');
-    console.log(style);
-    console.log('---style-end----');
+    // console.log('---style-start----');
+    // console.log(style);
+    // console.log('---style-end----');
     document.body.append(style);
 
     var obj = {
