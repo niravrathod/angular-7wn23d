@@ -126,6 +126,7 @@ export class AppComponent implements OnInit {
       { text: 'Collapse All', target: '.e-headercontent', id: 'collapseall' },
       { text: 'Expand All', target: '.e-headercontent', id: 'expandall' },
       { text: 'Add New Column', target: '.e-headercontent', id: 'add_column' },
+      { text: 'Edit Column', target: '.e-headercontent', id: 'edit_column' },
       {
         text: 'Delete Column',
         target: '.e-headercontent',
@@ -201,6 +202,9 @@ export class AppComponent implements OnInit {
         this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
       document
         .querySelectorAll('li#add_column')[0]
+        .setAttribute('style', 'display: block;');
+      document
+        .querySelectorAll('li#edit_column')[0]
         .setAttribute('style', 'display: block;');
         // console.log('hello');
         // console.log(arg.column.freeze);
