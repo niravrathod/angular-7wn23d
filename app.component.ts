@@ -519,7 +519,7 @@ export class AppComponent implements OnInit {
     document.body.append(style);
 
     var obj = {
-      value: new_col_form.value.default_value,
+      defaultValue: new_col_form.value.default_value,
       field: uid,
       headerText: new_col_form.value.column_name,
       type: this.data_type_json[new_col_form.value.data_type],
