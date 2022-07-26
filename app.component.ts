@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
   private data_type_json: object[] = {
     Text: 'stringedit',
     Number: 'numericedit',
-    Date: 'dateedit',
+    Date: 'datepickeredit',
     Boolean: 'booleanedit',
     'Drop Down List': 'dropdownedit',
   };
