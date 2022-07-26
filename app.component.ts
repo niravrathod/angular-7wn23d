@@ -496,11 +496,22 @@ export class AppComponent implements OnInit {
 
     edit_col_form.controls['column_name'].setValue(column_edit.headerText);
     edit_col_form.controls['data_type'].setValue(this.data_type_to_json[column_edit.editType]);
+    this.editcolumnonChange(edit_col_form.controls['data_type']);
     edit_col_form.controls['default_value'].setValue(column_edit.defaultValue);
     edit_col_form.controls['minimum_col_width'].setValue(column_edit.minWidth);
     edit_col_form.controls['alignment'].setValue(column_edit.textAlign);
-    edit_col_form.controls['non_blank'].setValue(true);
+    if(column_edit.validationRules!==undefined && column_edit.validationRules.required==true)
+    {
+      edit_col_form.controls['non_blank'].setValue(true);
+    }
+    else
+    {
+      edit_col_form.controls['non_blank'].setValue(false);
+    }
     edit_col_form.controls['text_wrap'].setValue(true);
+
+    var c_name = document.getElementsByClassName(column_edit.field);
+    console.log(c_name);
     edit_col_form.controls['background_color'].setValue('#FFFFFF');
     edit_col_form.controls['font_color'].setValue('#000000');
     edit_col_form.controls['font_size'].setValue('');
