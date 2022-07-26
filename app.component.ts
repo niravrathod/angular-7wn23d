@@ -519,7 +519,7 @@ export class AppComponent implements OnInit {
       field: uid,
       headerText: new_col_form.value.column_name,
       type: this.data_type_json[new_col_form.value.data_type],
-      edittype: this.data_type_json[new_col_form.value.data_type],
+      editType: this.data_type_json[new_col_form.value.data_type],
       minWidth: new_col_form.value.minimum_col_width,
       textAlign: new_col_form.value.alignment,
       customAttributes: { class: uid },
