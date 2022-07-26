@@ -413,11 +413,11 @@ export class AppComponent implements OnInit {
     // font-family: 'Bell MT';
     // font-size: '20px';
     // e-headercelldiv
-    let bgcolor = 'white';
-    let fontcolor = 'black';
+    let bgcolor = '#ffffff';
+    let fontcolor = '#000000';
     if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '' || new_col_form.value.background_color == '#FFFFFF' && new_col_form.value.font_color == '#000000') {
-      let bgcolor = 'white';
-      let fontcolor = 'black';
+      let bgcolor = '#ffffff';
+      let fontcolor = '#000000';
     } else {
       let bgcolor = new_col_form.value.background_color;
       let fontcolor = new_col_form.value.background_color;
