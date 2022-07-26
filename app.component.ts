@@ -413,14 +413,14 @@ export class AppComponent implements OnInit {
     // font-family: 'Bell MT';
     // font-size: '20px';
     // e-headercelldiv
-    let bgcolor = '';
-    let fontcolor = '';
+    let bgcolor = 'white';
+    let fontcolor = 'black';
     if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '' || new_col_form.value.background_color == '#FFFFFF' && new_col_form.value.font_color == '#000000') {
-      bgcolor = 'white';
-      fontcolor = 'black';
+      let bgcolor = 'white';
+      let fontcolor = 'black';
     } else {
-      bgcolor = new_col_form.value.background_color;
-      fontcolor = new_col_form.value.background_color;
+      let bgcolor = new_col_form.value.background_color;
+      let fontcolor = new_col_form.value.background_color;
 
     }
     const uid = uuid.v4();
