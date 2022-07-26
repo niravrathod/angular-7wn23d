@@ -558,10 +558,10 @@ export class AppComponent implements OnInit {
     console.log('non_blank')
     if(new_col_form.value.non_blank==true)
     {
-      
+      console.log(this.treegrid.getColumnByField(this.edit_column));
       // var obj = {
         this.treegrid.getColumnByField(this.edit_column).defaultValue= new_col_form.value.default_value;
-        this.treegrid.getColumnByField(this.edit_column).field= uid;
+        // this.treegrid.getColumnByField(this.edit_column).field= uid;
         this.treegrid.getColumnByField(this.edit_column).headerText= new_col_form.value.column_name;
         this.treegrid.getColumnByField(this.edit_column).type= this.data_type_json[new_col_form.value.data_type];
         this.treegrid.getColumnByField(this.edit_column).editType= this.data_type_json[new_col_form.value.data_type];
@@ -584,7 +584,7 @@ export class AppComponent implements OnInit {
       //   customAttributes: { class: uid },
       // }; 
       this.treegrid.getColumnByField(this.edit_column).defaultValue= new_col_form.value.default_value;
-        this.treegrid.getColumnByField(this.edit_column).field= uid;
+        // this.treegrid.getColumnByField(this.edit_column).field= uid;
         this.treegrid.getColumnByField(this.edit_column).headerText= new_col_form.value.column_name;
         this.treegrid.getColumnByField(this.edit_column).type= this.data_type_json[new_col_form.value.data_type];
         this.treegrid.getColumnByField(this.edit_column).editType= this.data_type_json[new_col_form.value.data_type];
