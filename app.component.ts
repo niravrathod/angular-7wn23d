@@ -480,9 +480,20 @@ export class AppComponent implements OnInit {
     const column_edit = this.treegrid.getColumnByField(this.edit_column);
     console.log(column_edit);
 
+    // edit_col_form.controls['column_name'].setValue(column_edit.headerText);
+    // edit_col_form.controls['column_name'].setValue('HAHAHA');
+    // edit_col_form.controls['column_name'].setValue('HAHAHA');
+
     edit_col_form.controls['column_name'].setValue(column_edit.headerText);
-    // edit_col_form.controls['column_name'].setValue('HAHAHA');
-    // edit_col_form.controls['column_name'].setValue('HAHAHA');
+    edit_col_form.controls['data_type'].setValue(column_edit.editType);
+    edit_col_form.controls['default_value'].setValue(column_edit.defaultValue);
+    edit_col_form.controls['minimum_col_width'].setValue(column_edit.minWidth);
+    edit_col_form.controls['alignment'].setValue(column_edit.textAlign);
+    edit_col_form.controls['non_blank'].setValue(true);
+    edit_col_form.controls['text_wrap'].setValue(true);
+    edit_col_form.controls['background_color'].setValue('#FFFFFF');
+    edit_col_form.controls['font_color'].setValue('#000000');
+    edit_col_form.controls['font_size'].setValue('');
 
 
   }
