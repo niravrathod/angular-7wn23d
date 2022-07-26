@@ -541,7 +541,7 @@ export class AppComponent implements OnInit {
     // console.log(style);
     // console.log('---style-end----');
     document.body.append(style);
-    if(new_col_form.value.non_blank=='true')
+    if(new_col_form.value.non_blank==true)
     {
       
       var obj = {
