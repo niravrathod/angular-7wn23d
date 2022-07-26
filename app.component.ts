@@ -414,8 +414,12 @@ export class AppComponent implements OnInit {
     // font-size: '20px';
     // e-headercelldiv
     if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '' || new_col_form.value.background_color == '#FFFFFF' && new_col_form.value.font_color == '#000000') {
-      new_col_form.value.background_color = 'white';
-      new_col_form.value.font_color = 'black';
+      let bgcolor = 'white';
+      let fontcolor = 'black';
+    } else {
+      let bgcolor = new_col_form.value.background_color;
+      let fontcolor = new_col_form.value.background_color;
+
     }
     const uid = uuid.v4();
     var style = document.createElement('style');
@@ -424,9 +428,9 @@ export class AppComponent implements OnInit {
       '.e-treegrid .e-headercell.' +
       uid +
       ' { background-color:' +
-      new_col_form.value.background_color +
+      bgcolor +
       ';color:' +
-      new_col_form.value.font_color +
+      fontcolor +
       ';}.e-treegrid .e-headercell.' +
       uid +
       ' .e-headercelldiv{font-size:' +
