@@ -424,9 +424,9 @@ export class AppComponent implements OnInit {
       '.e-treegrid .e-headercell.' +
       uid +
       ' { background-color:' +
-      bgcolor +
+      new_col_form.value.background_color +
       ';color:' +
-      fontcolor +
+      new_col_form.value.font_color +
       ';}.e-treegrid .e-headercell.' +
       uid +
       ' .e-headercelldiv{font-size:' +
