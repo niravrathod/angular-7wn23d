@@ -45,6 +45,8 @@ export class AppComponent implements OnInit {
   public treegridColumns: any;
   @ViewChild('newcolumnDialog')
   public newcolumnDialog: DialogComponent;
+  @ViewChild('editcolumnDialog')
+  public editcolumnDialog: DialogComponent;
   public content: string = 'Atleast one Column should be in movable';
   public header: string = 'Frozen';
   public visible: boolean = false;
@@ -102,6 +104,21 @@ export class AppComponent implements OnInit {
   // public config: ConfigService;
   // new_column_form: FormGroup;
   // constructor(private config: ConfigService) {}
+
+
+
+  // edit-column
+  public edit_column_header: string = 'Edit Column';
+  public edit_column_visible: boolean = false;
+  public edit_column_animationSettings: object = { effect: 'None' };
+  public edit_column_showCloseIcon: boolean = true;
+  public edit_column_target: string = '.control-section';
+  public edit_column_width: string = '450px';
+  public edit_column_text: boolean = false;
+  public edit_column_number: boolean = false;
+  public edit_column_bool: boolean = false;
+  public edit_column_date: boolean = false;
+  public edit_column_list: boolean = false;
 
   constructor(private config: ConfigService) {}
   ngOnInit(): void {
@@ -303,6 +320,54 @@ export class AppComponent implements OnInit {
     // }
     // document.getElementById('event').append(element);
   }
+  editcolumnonChange(args): void {
+    console.log(args);
+    // let necolumn: HTML
+    switch (args.value) {
+      case 'Text':
+        this.edit_column_number = false;
+        this.edit_column_bool = false;
+        this.edit_column_date = false;
+        this.edit_column_list = false;
+        this.edit_column_text = true;
+        break;
+      case 'Number':
+        this.edit_column_text = false;
+        this.edit_column_bool = false;
+        this.edit_column_date = false;
+        this.edit_column_list = false;
+        this.edit_column_number = true;
+        break;
+      case 'Boolean':
+        this.edit_column_text = false;
+        this.edit_column_number = false;
+        this.edit_column_date = false;
+        this.edit_column_list = false;
+        this.edit_column_bool = true;
+        break;
+      case 'Date':
+        this.edit_column_text = false;
+        this.edit_column_number = false;
+        this.edit_column_bool = false;
+        this.edit_column_list = false;
+        this.edit_column_date = true;
+        break;
+      case 'Drop Down List':
+        this.edit_column_text = false;
+        this.edit_column_number = false;
+        this.edit_column_bool = false;
+        this.edit_column_date = false;
+        this.edit_column_list = true;
+        break;
+    }
+    // let element: HTMLElement = document.createElement('p');
+    // if (args.isInteracted) {
+    //     element.innerText = 'Changes happened by Interaction';
+    // } else {
+    //     element.innerText = 'Changes happened by programmatic';
+    // }
+    // document.getElementById('event').append(element);
+  }
   contextMenuClick(args?: MenuEventArgs): void {
     if (args.item.id === 'collapserow') {
       this.treegrid.collapseRow(
@@ -382,6 +447,9 @@ export class AppComponent implements OnInit {
     } else if (args.item.id === 'delete_column') {
       this.del_column = args.column.field;
       this.delalertDialog.show();
+    } else if (args.item.id === 'edit_column') {
+      // this.createForm();
+      this.editcolumnDialog.show();
     }
   }
 
