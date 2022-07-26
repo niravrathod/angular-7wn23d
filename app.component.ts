@@ -161,9 +161,10 @@ export class AppComponent implements OnInit {
         isPrimaryKey: 'true',
         headerText: 'Task ID',
         width: '90',
+        type:'numericedit'
         edittype:'numericedit'
       },
-      { field: 'taskName', headerText: 'Task Name', width: '200',edittype:'stringedit' },
+      { field: 'taskName', headerText: 'Task Name', width: '200',edittype:'stringedit',type:'stringedit' },
       {
         field: 'startDate',
         headerText: 'Start Date',
