@@ -413,8 +413,6 @@ export class AppComponent implements OnInit {
     // font-family: 'Bell MT';
     // font-size: '20px';
     // e-headercelldiv
-    console.log(new_col_form.value.background_color);
-    console.log(new_col_form.value.font_color);
     if (new_col_form.value.background_color == '' && new_col_form.value.font_color == '' || new_col_form.value.background_color == '#FFFFFF' && new_col_form.value.font_color == '#000000') {
       new_col_form.value.background_color = 'white';
       new_col_form.value.font_color = 'black';
