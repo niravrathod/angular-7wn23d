@@ -13,6 +13,7 @@ import {
   TreeGridComponent,
   FreezeService,
   ReorderService,
+  ColumnChooserService
 } from '@syncfusion/ej2-angular-treegrid';
 import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { BeforeOpenCloseEventArgs } from '@syncfusion/ej2-inputs';
@@ -32,7 +33,7 @@ import * as uuid from 'uuid';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [FreezeService, ReorderService],
+  providers: [FreezeService, ReorderService,ColumnChooserService],
 })
 export class AppComponent implements OnInit {
   public data: Object[] = [];
@@ -48,6 +49,8 @@ export class AppComponent implements OnInit {
   public newcolumnDialog: DialogComponent;
   @ViewChild('editcolumnDialog')
   public editcolumnDialog: DialogComponent;
+  @ViewChild('_gridcontrol_ccdlg')
+  public _gridcontrol_ccdlg: DialogComponent;
   public content: string = 'Atleast one Column should be in movable';
   public header: string = 'Frozen';
   public visible: boolean = false;
@@ -160,10 +163,11 @@ export class AppComponent implements OnInit {
         id: 'delete_column',
       },
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
+      { text: 'Show/Hide Columns', target: '.e-headercontent', id: 'show_hide_columns' },
     ];
     this.editSettings ={ allowEditing: true, allowAdding: true, allowDeleting: true, mode:"Dialog"}; 
     // this.toolbar = ['Add', 'Edit', 'Delete'];
-    this.toolbar = ['Add'];
+    this.toolbar = ['Add','ColumnChooser'];
   }
   ngAfterViewInit() {
     this.treegridColumns = [
@@ -243,6 +247,9 @@ export class AppComponent implements OnInit {
         .setAttribute('style', 'display: block;');
       document
         .querySelectorAll('li#edit_column')[0]
+        .setAttribute('style', 'display: block;');
+      document
+        .querySelectorAll('li#show_hide_columns')[0]
         .setAttribute('style', 'display: block;');
         // console.log('hello');
         // console.log(arg.column.freeze);
@@ -473,6 +480,12 @@ export class AppComponent implements OnInit {
       this.edit_column = args.column.field;
 
       this.editcolumnDialog.show();
+    } else if (args.item.id === 'show_hide_columns') {
+      // this.createForm();
+      // document.getElementsByClassName('e-ccdlg')[0]
+      // this._gridcontrol_ccdlg.show();
+      document.getElementsByClassName('e-columnchooser-btn')[0].click()
+      console.log(document.getElementsByClassName('e-ccdlg')[0]);
     }
   }
 
