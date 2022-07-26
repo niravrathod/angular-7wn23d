@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
   public del_target: string = '.control-section';
   public del_width: string = '300px';
   public del_column: any = '';
+  public edit_column: any = '';
   //Delete Column -end
 
   public len: Number = 0;
