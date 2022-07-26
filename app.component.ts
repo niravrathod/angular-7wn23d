@@ -36,6 +36,7 @@ import * as uuid from 'uuid';
 })
 export class AppComponent implements OnInit {
   public data: Object[] = [];
+  public required: any = {required:true};
   @ViewChild('alertDialog')
   public alertDialog: DialogComponent;
   @ViewChild('delalertDialog')
@@ -165,7 +166,8 @@ export class AppComponent implements OnInit {
         headerText: 'Task ID',
         width: '90',
         // type:'numericedit',
-        editType:'numericedit'
+        editType:'numericedit',
+        validationRules:this.required
       },
       { field: 'taskName', headerText: 'Task Name', width: '200',editType:'stringedit' },
       {
@@ -539,17 +541,34 @@ export class AppComponent implements OnInit {
     // console.log(style);
     // console.log('---style-end----');
     document.body.append(style);
-
-    var obj = {
-      defaultValue: new_col_form.value.default_value,
-      field: uid,
-      headerText: new_col_form.value.column_name,
-      type: this.data_type_json[new_col_form.value.data_type],
-      editType: this.data_type_json[new_col_form.value.data_type],
-      minWidth: new_col_form.value.minimum_col_width,
-      textAlign: new_col_form.value.alignment,
-      customAttributes: { class: uid },
-    }; 
+    if(new_col_form.value.non_blank=='true')
+    {
+      
+      var obj = {
+        defaultValue: new_col_form.value.default_value,
+        field: uid,
+        headerText: new_col_form.value.column_name,
+        type: this.data_type_json[new_col_form.value.data_type],
+        editType: this.data_type_json[new_col_form.value.data_type],
+        minWidth: new_col_form.value.minimum_col_width,
+        textAlign: new_col_form.value.alignment,
+        customAttributes: { class: uid },
+        validationRules:this.required
+      };
+    }
+    else
+    {
+      var obj = {
+        defaultValue: new_col_form.value.default_value,
+        field: uid,
+        headerText: new_col_form.value.column_name,
+        type: this.data_type_json[new_col_form.value.data_type],
+        editType: this.data_type_json[new_col_form.value.data_type],
+        minWidth: new_col_form.value.minimum_col_width,
+        textAlign: new_col_form.value.alignment,
+        customAttributes: { class: uid },
+      }; 
+    }
     this.treegrid.columns.push(obj as any); //you can add the columns by using the Grid columns method
     this.treegrid.refreshColumns();
     new_col_form.reset();
