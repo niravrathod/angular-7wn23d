@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
 
   public len: Number = 0;
   public f_name: String = '';
-
+  public editSettings: Object; 
   //new-column
   public new_column_header: string = 'Add New Column';
   public new_column_visible: boolean = false;
@@ -152,6 +152,7 @@ export class AppComponent implements OnInit {
       },
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
     ];
+    this.editSettings ={ allowEditing: true, allowAdding: true, allowDeleting: true, mode:"Dialog"}; 
   }
   ngAfterViewInit() {
     this.treegridColumns = [
@@ -177,6 +178,9 @@ export class AppComponent implements OnInit {
   }
   closeNewCol(): void {
     this.newcolumnDialog.hide();
+  }
+  closeEditCol(): void {
+    this.editcolumnDialog.hide();
   }
   contextMenuOpen(arg?: BeforeOpenCloseEventArgs): void {
     let elem: Element = arg.event.target as Element;
