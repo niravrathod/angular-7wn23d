@@ -36,7 +36,7 @@ import * as uuid from 'uuid';
 })
 export class AppComponent implements OnInit {
   public data: Object[] = [];
-  public required: any = {required:true};
+  public required: Object = {required:true};
   @ViewChild('alertDialog')
   public alertDialog: DialogComponent;
   @ViewChild('delalertDialog')
@@ -522,7 +522,8 @@ export class AppComponent implements OnInit {
       new_col_form.value.background_color = '#FFFFFF';
       new_col_form.value.font_color = '#000000';
     } 
-    const uid = uuid.v4();
+    // const uid = uuid.v4();
+    const uid = '_' + Math.random().toString(36).substr(2, 9);
     var style = document.createElement('style');
     style.type = 'text/css';
     style.innerHTML =
@@ -541,6 +542,9 @@ export class AppComponent implements OnInit {
     // console.log(style);
     // console.log('---style-end----');
     document.body.append(style);
+    console.log('non_blank')
+    console.log(new_col_form.value.non_blank)
+    console.log('non_blank')
     if(new_col_form.value.non_blank==true)
     {
       
@@ -571,6 +575,17 @@ export class AppComponent implements OnInit {
     }
     this.treegrid.columns.push(obj as any); //you can add the columns by using the Grid columns method
     this.treegrid.refreshColumns();
+    new_col_form.controls['column_name'].setValue('');
+    new_col_form.controls['data_type'].setValue('');
+    new_col_form.controls['default_value'].setValue('');
+    new_col_form.controls['minimum_col_width'].setValue('');
+    new_col_form.controls['alignment'].setValue('');
+    new_col_form.controls['non_blank'].setValue(true);
+    new_col_form.controls['text_wrap'].setValue(true);
+    new_col_form.controls['background_color'].setValue('#FFFFFF');
+    new_col_form.controls['font_color'].setValue('#000000');
+    new_col_form.controls['font_size'].setValue('');
+
     new_col_form.reset();
     this.newcolumnDialog.hide();
     DialogUtility.alert({

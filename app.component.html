@@ -120,7 +120,7 @@
                       <ejs-numerictextbox *ngIf="new_column_number" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
                       </ejs-numerictextbox>
 
-                      <ejs-checkbox *ngIf="new_column_bool" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
+                      <ejs-checkbox *ngIf="new_column_bool" id="default_value" #default_valueval='ngModel' value="true" name="default_value" required ngModel>
                       </ejs-checkbox>
 
                       <ejs-datepicker *ngIf="new_column_date" id="default_value" #default_valueval='ngModel' name="default_value" required ngModel>
@@ -132,7 +132,7 @@
               </div>
               <div class="form-group" style="padding-top: 11px;">
                   <label class="e-label-top" for="non_blank">Non Blank </label>
-                  <ejs-checkbox id="non_blank" #non_blankval='ngModel' name="non_blank" ngModel>
+                  <ejs-checkbox id="non_blank" #non_blankval='ngModel' name="non_blank" value="true" ngModel>
                   </ejs-checkbox>
               </div>
               <div class="form-group" style="padding-top: 11px;">
@@ -161,7 +161,7 @@
             </div>
                 <div class="form-group" style="padding-top: 11px;">
                   <label class="e-label-top" for="text_wrap">Text Wrap </label>
-                  <ejs-checkbox id="text_wrap" #text_wrapval='ngModel' name="text_wrap" ngModel>
+                  <ejs-checkbox id="text_wrap" value="true" #text_wrapval='ngModel' name="text_wrap" ngModel>
                   </ejs-checkbox>
               </div>
                 <div class="form-group" style="padding-top: 11px;">
