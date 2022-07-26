@@ -530,6 +530,7 @@ export class AppComponent implements OnInit {
     }; 
     this.treegrid.columns.push(obj as any); //you can add the columns by using the Grid columns method
     this.treegrid.refreshColumns();
+    new_col_form.reset();
     this.newcolumnDialog.hide();
     DialogUtility.alert({
       title: 'Success',
