@@ -98,6 +98,13 @@ export class AppComponent implements OnInit {
     Boolean: 'booleanedit',
     'Drop Down List': 'dropdownedit',
   };
+  private data_type_to_json: object[] = {
+    'stringedit':'Text',
+    'numericedit':'Number',
+    'datepickeredit':'Date',
+    'booleanedit':'Boolean',
+    'dropdownedit':'Drop Down List',
+  };
 
   public new_column_text: boolean = false;
   public new_column_number: boolean = false;
@@ -479,13 +486,15 @@ export class AppComponent implements OnInit {
     console.log(this.edit_column);
     const column_edit = this.treegrid.getColumnByField(this.edit_column);
     console.log(column_edit);
+    console.log(column_edit.headerText);
+    console.log(column_edit.editType);
 
     // edit_col_form.controls['column_name'].setValue(column_edit.headerText);
     // edit_col_form.controls['column_name'].setValue('HAHAHA');
     // edit_col_form.controls['column_name'].setValue('HAHAHA');
 
     edit_col_form.controls['column_name'].setValue(column_edit.headerText);
-    edit_col_form.controls['data_type'].setValue(column_edit.editType);
+    edit_col_form.controls['data_type'].setValue(this.data_type_to_json(column_edit.editType));
     edit_col_form.controls['default_value'].setValue(column_edit.defaultValue);
     edit_col_form.controls['minimum_col_width'].setValue(column_edit.minWidth);
     edit_col_form.controls['alignment'].setValue(column_edit.textAlign);
