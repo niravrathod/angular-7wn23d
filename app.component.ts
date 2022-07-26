@@ -161,18 +161,20 @@ export class AppComponent implements OnInit {
         isPrimaryKey: 'true',
         headerText: 'Task ID',
         width: '90',
+        edittype:'numericedit'
       },
-      { field: 'taskName', headerText: 'Task Name', width: '200' },
+      { field: 'taskName', headerText: 'Task Name', width: '200',edittype:'stringedit' },
       {
         field: 'startDate',
         headerText: 'Start Date',
         width: '100',
         format: 'yMd',
+        edittype:'datepickeredit'
       },
-      { field: 'endDate', headerText: 'End Date', width: '100', format: 'yMd' },
-      { field: 'progress', headerText: 'Progress', width: '100' },
-      { field: 'duration', headerText: 'Duration', width: '100' },
-      { field: 'priority', headerText: 'Priority', width: '100' },
+      { field: 'endDate', headerText: 'End Date', width: '100', format: 'yMd',edittype:'datepickeredit' },
+      { field: 'progress', headerText: 'Progress', width: '100',edittype:'numericedit' },
+      { field: 'duration', headerText: 'Duration', width: '100',edittype:'numericedit' },
+      { field: 'priority', headerText: 'Priority', width: '100',edittype:'stringedit' },
     ];
     // { headerText: "taskName", width: "90", template: this.temp1}];
   }
