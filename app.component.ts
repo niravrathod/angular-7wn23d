@@ -74,6 +74,7 @@ export class AppComponent implements OnInit {
   public len: Number = 0;
   public f_name: String = '';
   public editSettings: Object; 
+  public toolbar: string[];
   //new-column
   public new_column_header: string = 'Add New Column';
   public new_column_visible: boolean = false;
@@ -153,6 +154,8 @@ export class AppComponent implements OnInit {
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
     ];
     this.editSettings ={ allowEditing: true, allowAdding: true, allowDeleting: true, mode:"Dialog"}; 
+    // this.toolbar = ['Add', 'Edit', 'Delete'];
+    this.toolbar = ['Add'];
   }
   ngAfterViewInit() {
     this.treegridColumns = [
@@ -458,6 +461,8 @@ export class AppComponent implements OnInit {
       this.delalertDialog.show();
     } else if (args.item.id === 'edit_column') {
       // this.createForm();
+      this.edit_column = args.column.field;
+
       this.editcolumnDialog.show();
     }
   }
@@ -469,7 +474,15 @@ export class AppComponent implements OnInit {
     console.log(edit_form_value.column_name.value);
     console.log(edit_col_form.value);
     console.log(edit_col_form.controls);
-    edit_col_form.controls['column_name'].setValue('HAHAHA');
+    console.log(this.edit_column);
+    const column_edit = this.treegrid.getColumnByField(this.edit_column);
+    console.log(column_edit);
+
+    edit_col_form.controls['column_name'].setValue(column_edit.headerText);
+    // edit_col_form.controls['column_name'].setValue('HAHAHA');
+    // edit_col_form.controls['column_name'].setValue('HAHAHA');
+
+
   }
   addNewCol(new_col_form) {
     console.log(new_col_form);
