@@ -446,7 +446,7 @@ export class AppComponent implements OnInit {
       minWidth: new_col_form.value.minimum_col_width,
       textAlign: new_col_form.value.alignment,
       customAttributes: { class: uid },
-    };
+    }; 
     this.treegrid.columns.push(obj as any); //you can add the columns by using the Grid columns method
     this.treegrid.refreshColumns();
     this.newcolumnDialog.hide();
