@@ -153,6 +153,7 @@ export class AppComponent implements OnInit {
     this.contextMenuItems = [
       { text: 'Add Next', target: '.e-content', id: 'addnext' },
       { text: 'Edit Row', target: '.e-content', id: 'editrow' },
+      { text: 'Delete Row', target: '.e-content', id: 'deleterow' },
       { text: 'Collapse the Row', target: '.e-content', id: 'collapserow' },
       { text: 'Expand the Row', target: '.e-content', id: 'expandrow' },
       { text: 'Collapse All', target: '.e-headercontent', id: 'collapseall' },
@@ -240,6 +241,9 @@ export class AppComponent implements OnInit {
         .setAttribute('style', 'display: block;');
         document
         .querySelectorAll('li#editrow')[0]
+        .setAttribute('style', 'display: block;');
+        document
+        .querySelectorAll('li#deleterow')[0]
         .setAttribute('style', 'display: block;');
         
         document
@@ -413,10 +417,18 @@ export class AppComponent implements OnInit {
       // allowAdding
       // allowDeleting
       // this.editSettings.allowAdding=true;
+      // let elem: Element = args.event.target as Element;
+      // let row: Element = elem.closest('.e-row');
+      // let uid: string = row && row.getAttribute('data-uid');
+      // console.log(this.treegrid.grid.getRowObjectFromUID(uid));
       this.treegrid.grid.editModule.addRecord();
+      // this.treegrid.grid.editModule.addRecord();
       // this.editSettings.allowAdding=false;
     } else if (args.item.id === 'editrow') {
       this.treegrid.grid.editModule.startEdit();
+    } else if (args.item.id === 'deleterow') {
+      // this.treegrid.grid.deleteModule.deleteRecord();
+      this.treegrid.deleteRecord();
     } else if (args.item.id === 'collapserow') {
       // var id = this.treegrid.getRowByIndex(ndx).nextElementSibling.querySelector(".e-control.e-grid .e-lib .e-gridhover").id;
       //   var child = document.getElementById(id).ej2_instances[0];
