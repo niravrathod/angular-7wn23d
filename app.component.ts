@@ -235,6 +235,13 @@ export class AppComponent implements OnInit {
         );
         let val: string = flag ? 'none' : 'block';
         document
+        .querySelectorAll('li#addnext')[0]
+        .setAttribute('style', 'display: block;');
+        document
+        .querySelectorAll('li#editrow')[0]
+        .setAttribute('style', 'display: block;');
+        
+        document
           .querySelectorAll('li#expandrow')[0]
           .setAttribute('style', 'display: ' + val + ';');
         val = !flag ? 'none' : 'block';
