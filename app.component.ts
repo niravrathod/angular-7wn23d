@@ -151,6 +151,8 @@ export class AppComponent implements OnInit {
     // this.data = key;
     this.data = sampleData;
     this.contextMenuItems = [
+      { text: 'Add Next', target: '.e-content', id: 'addnext' },
+      { text: 'Edit Row', target: '.e-content', id: 'editrow' },
       { text: 'Collapse the Row', target: '.e-content', id: 'collapserow' },
       { text: 'Expand the Row', target: '.e-content', id: 'expandrow' },
       { text: 'Collapse All', target: '.e-headercontent', id: 'collapseall' },
@@ -165,7 +167,7 @@ export class AppComponent implements OnInit {
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
       { text: 'Show/Hide Columns', target: '.e-headercontent', id: 'show_hide_columns' },
     ];
-    this.editSettings ={ allowEditing: true, allowAdding: true, allowDeleting: true, mode:"Dialog",newRowPosition: 'Below'}; 
+    this.editSettings ={ allowEditing: false, allowAdding: false, allowDeleting: false, mode:"Dialog",newRowPosition: 'Below'}; 
     // this.toolbar = ['Add', 'Edit', 'Delete'];
     // this.toolbar = ['Add','ColumnChooser'];
     // this.toolbar = ['Add'];
@@ -398,7 +400,11 @@ export class AppComponent implements OnInit {
     // document.getElementById('event').append(element);
   }
   contextMenuClick(args?: MenuEventArgs): void {
-    if (args.item.id === 'collapserow') {
+    if (args.item.id === 'addnext') {
+      this.treegrid.grid.editModule.addRecord();
+    } else if (args.item.id === 'editrow') {
+      this.treegrid.grid.editModule.startEdit();
+    } else if (args.item.id === 'collapserow') {
       // var id = this.treegrid.getRowByIndex(ndx).nextElementSibling.querySelector(".e-control.e-grid .e-lib .e-gridhover").id;
       //   var child = document.getElementById(id).ej2_instances[0];
       //   setTimeout(function () {
@@ -410,13 +416,13 @@ export class AppComponent implements OnInit {
       // console.log(document.getElementById(args.element.nextElementSibling.id).ej2_instances)
       // var child = document.getElementById(id).ej2_instances[0];
       // child.addRecord();
-      this.treegrid.grid.editModule.addRecord({},this.treegrid.getSelectedRecords()[0].index);
+      // this.treegrid.grid.editModule.addRecord({},this.treegrid.getSelectedRecords()[0].index);
       // this.treegrid.grid.editModule.startEdit();
 
-      // this.treegrid.collapseRow(
-      //   this.treegrid.getSelectedRows()[0] as HTMLTableRowElement,
-      //   this.treegrid.getSelectedRecords()[0]
-      // );
+      this.treegrid.collapseRow(
+        this.treegrid.getSelectedRows()[0] as HTMLTableRowElement,
+        this.treegrid.getSelectedRecords()[0]
+      );
     } else if (args.item.id === 'expandrow') {
       this.treegrid.expandRow(
         this.treegrid.getSelectedRows()[0] as HTMLTableRowElement,
