@@ -406,8 +406,9 @@ export class AppComponent implements OnInit {
       //   }, 100);
       console.log(args);
       var id = args.element.nextElementSibling.querySelector(".e-control.e-grid .e-lib .e-gridhover").id;
-      var child = document.getElementById(id).ej2_instances[0];
-      child.addRecord();
+      console.log(id)
+      // var child = document.getElementById(id).ej2_instances[0];
+      // child.addRecord();
       // this.treegrid.grid.editModule.addRecord();
       // this.treegrid.grid.editModule.startEdit();
 
