@@ -399,7 +399,8 @@ export class AppComponent implements OnInit {
   }
   contextMenuClick(args?: MenuEventArgs): void {
     if (args.item.id === 'collapserow') {
-      this.treegrid.grid.editModule.addRecord();
+      // this.treegrid.grid.editModule.addRecord();
+      this.treegrid.grid.editModule.editRecord();
 
       // this.treegrid.collapseRow(
       //   this.treegrid.getSelectedRows()[0] as HTMLTableRowElement,
