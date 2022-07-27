@@ -399,10 +399,12 @@ export class AppComponent implements OnInit {
   }
   contextMenuClick(args?: MenuEventArgs): void {
     if (args.item.id === 'collapserow') {
-      this.treegrid.collapseRow(
-        this.treegrid.getSelectedRows()[0] as HTMLTableRowElement,
-        this.treegrid.getSelectedRecords()[0]
-      );
+      this.treegrid.grid.editModule.addRecord();
+
+      // this.treegrid.collapseRow(
+      //   this.treegrid.getSelectedRows()[0] as HTMLTableRowElement,
+      //   this.treegrid.getSelectedRecords()[0]
+      // );
     } else if (args.item.id === 'expandrow') {
       this.treegrid.expandRow(
         this.treegrid.getSelectedRows()[0] as HTMLTableRowElement,
@@ -490,7 +492,7 @@ export class AppComponent implements OnInit {
       // this.treegrid.grid.columnChooserModule.openColumnChooser(500, 140);
       console.log(this.treegrid);
       this.treegrid.grid.columnChooserModule.openColumnChooser();
-      // this.treegrid.grid.editModule.dialogObj;
+      // this.treegrid.grid.editModule.addRecord();
     }
   }
 
