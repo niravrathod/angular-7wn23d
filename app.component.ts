@@ -167,7 +167,7 @@ export class AppComponent implements OnInit {
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
       { text: 'Show/Hide Columns', target: '.e-headercontent', id: 'show_hide_columns' },
     ];
-    this.editSettings ={ allowEditing: false, allowAdding: false, allowDeleting: false, mode:"Dialog",newRowPosition: 'Below'}; 
+    this.editSettings ={ allowEditing: true, allowAdding: true, allowDeleting: false, mode:"Dialog",newRowPosition: 'Below'}; 
     // this.toolbar = ['Add', 'Edit', 'Delete'];
     // this.toolbar = ['Add','ColumnChooser'];
     // this.toolbar = ['Add'];
@@ -411,9 +411,9 @@ export class AppComponent implements OnInit {
       // allowEditing
       // allowAdding
       // allowDeleting
-      this.editSettings.allowAdding=true;
+      // this.editSettings.allowAdding=true;
       this.treegrid.grid.editModule.addRecord();
-      this.editSettings.allowAdding=false;
+      // this.editSettings.allowAdding=false;
     } else if (args.item.id === 'editrow') {
       this.treegrid.grid.editModule.startEdit();
     } else if (args.item.id === 'collapserow') {
