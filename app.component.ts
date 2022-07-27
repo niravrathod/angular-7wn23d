@@ -167,7 +167,8 @@ export class AppComponent implements OnInit {
     ];
     this.editSettings ={ allowEditing: true, allowAdding: true, allowDeleting: true, mode:"Dialog"}; 
     // this.toolbar = ['Add', 'Edit', 'Delete'];
-    this.toolbar = ['Add','ColumnChooser'];
+    // this.toolbar = ['Add','ColumnChooser'];
+    this.toolbar = ['Add'];
   }
   ngAfterViewInit() {
     this.treegridColumns = [
@@ -484,8 +485,9 @@ export class AppComponent implements OnInit {
       // this.createForm();
       // document.getElementsByClassName('e-ccdlg')[0]
       // this._gridcontrol_ccdlg.show();
-      document.getElementsByClassName('e-columnchooser-btn')[0].click()
-      console.log(document.getElementsByClassName('e-ccdlg')[0]);
+      // document.getElementsByClassName('e-columnchooser-btn')[0].click()
+      // console.log(document.getElementsByClassName('e-ccdlg')[0]);
+      this.treegrid.grid.columnChooserModule.openColumnChooser(500, 140);
     }
   }
 
