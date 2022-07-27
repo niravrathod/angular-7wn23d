@@ -408,7 +408,12 @@ export class AppComponent implements OnInit {
   }
   contextMenuClick(args?: MenuEventArgs): void {
     if (args.item.id === 'addnext') {
+      // allowEditing
+      // allowAdding
+      // allowDeleting
+      this.editSettings.allowAdding=true;
       this.treegrid.grid.editModule.addRecord();
+      this.editSettings.allowAdding=false;
     } else if (args.item.id === 'editrow') {
       this.treegrid.grid.editModule.startEdit();
     } else if (args.item.id === 'collapserow') {
