@@ -488,23 +488,25 @@ export class AppComponent implements OnInit {
       // document.getElementsByClassName('e-columnchooser-btn')[0].click()
       // console.log(document.getElementsByClassName('e-ccdlg')[0]);
       // this.treegrid.grid.columnChooserModule.openColumnChooser(500, 140);
+      console.log(this.treegrid);
       this.treegrid.grid.columnChooserModule.openColumnChooser();
+      // this.treegrid.grid.editModule.dialogObj;
     }
   }
 
   beforeshowedit(edit_col_form) {
     var edit_form_value = edit_col_form.controls;
-    edit_col_form.value.column_name = 'HAHAHA';
-    edit_form_value.column_name.value = 'HAHAHA';
-    console.log(edit_form_value.column_name.value);
-    console.log(edit_col_form.value);
-    console.log(edit_col_form.controls);
-    console.log(this.edit_column);
+    // edit_col_form.value.column_name = 'HAHAHA';
+    // edit_form_value.column_name.value = 'HAHAHA';
+    // console.log(edit_form_value.column_name.value);
+    // console.log(edit_col_form.value);
+    // console.log(edit_col_form.controls);
+    // console.log(this.edit_column);
     var column_edit = this.treegrid.getColumnByField(this.edit_column);
-    console.log(column_edit);
-    console.log(column_edit.headerText);
-    console.log(column_edit.editType);
-    console.log(this.data_type_to_json);
+    // console.log(column_edit);
+    // console.log(column_edit.headerText);
+    // console.log(column_edit.editType);
+    // console.log(this.data_type_to_json);
 
     // edit_col_form.controls['column_name'].setValue(column_edit.headerText);
     // edit_col_form.controls['column_name'].setValue('HAHAHA');
