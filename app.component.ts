@@ -168,7 +168,7 @@ export class AppComponent implements OnInit {
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
       { text: 'Show/Hide Columns', target: '.e-headercontent', id: 'show_hide_columns' },
     ];
-    this.editSettings ={ allowEditing: true,allowEditOnDblClick:false,allowAdding: true, allowDeleting: false, mode:"Dialog",newRowPosition: 'Below'}; 
+    this.editSettings ={ allowEditing: true,allowEditOnDblClick:false,allowAdding: true, allowDeleting: true, mode:"Dialog",newRowPosition: 'Below'}; 
 
     // this.toolbar = ['Add', 'Edit', 'Delete'];
     // this.toolbar = ['Add','ColumnChooser'];
@@ -430,7 +430,7 @@ export class AppComponent implements OnInit {
       // this.treegrid.grid.deleteModule.deleteRecord();
       // this.treegrid.deleteRecord();
       this.treegrid.grid.editModule.deleteRecord();
-      console.log(this.treegrid);
+      // console.log(this.treegrid);
     } else if (args.item.id === 'collapserow') {
       // var id = this.treegrid.getRowByIndex(ndx).nextElementSibling.querySelector(".e-control.e-grid .e-lib .e-gridhover").id;
       //   var child = document.getElementById(id).ej2_instances[0];
