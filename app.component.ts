@@ -428,7 +428,8 @@ export class AppComponent implements OnInit {
       this.treegrid.grid.editModule.startEdit();
     } else if (args.item.id === 'deleterow') {
       // this.treegrid.grid.deleteModule.deleteRecord();
-      this.treegrid.deleteRecord();
+      // this.treegrid.deleteRecord();
+      console.log(this.treegrid);
     } else if (args.item.id === 'collapserow') {
       // var id = this.treegrid.getRowByIndex(ndx).nextElementSibling.querySelector(".e-control.e-grid .e-lib .e-gridhover").id;
       //   var child = document.getElementById(id).ej2_instances[0];
