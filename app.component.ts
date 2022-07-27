@@ -404,12 +404,13 @@ export class AppComponent implements OnInit {
       //   setTimeout(function () {
       //       child.addRecord();                           // This will call the addRecord for new data
       //   }, 100);
-      console.log(args);
-      var id = args.element.nextElementSibling.querySelector(".e-control.e-grid .e-lib .e-gridhover").id;
-      console.log(id)
+      // console.log(this.treegrid.getSelectedRecords()[0].index);
+      // var id = args.element.nextElementSibling.querySelector(".e-control.e-grid .e-lib .e-gridhover").id;
+      // console.log(args.element.nextElementSibling.id)
+      // console.log(document.getElementById(args.element.nextElementSibling.id).ej2_instances)
       // var child = document.getElementById(id).ej2_instances[0];
       // child.addRecord();
-      // this.treegrid.grid.editModule.addRecord();
+      this.treegrid.grid.editModule.addRecord({},this.treegrid.getSelectedRecords()[0].index);
       // this.treegrid.grid.editModule.startEdit();
 
       // this.treegrid.collapseRow(
