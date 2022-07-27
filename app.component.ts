@@ -167,7 +167,8 @@ export class AppComponent implements OnInit {
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
       { text: 'Show/Hide Columns', target: '.e-headercontent', id: 'show_hide_columns' },
     ];
-    this.editSettings ={ allowEditing: true, allowAdding: true, allowDeleting: false, mode:"Dialog",newRowPosition: 'Below'}; 
+    this.editSettings ={ allowEditing: true,allowEditOnDblClick:false,allowAdding: true, allowDeleting: false, mode:"Dialog",newRowPosition: 'Below'}; 
+
     // this.toolbar = ['Add', 'Edit', 'Delete'];
     // this.toolbar = ['Add','ColumnChooser'];
     // this.toolbar = ['Add'];
