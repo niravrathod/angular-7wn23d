@@ -79,7 +79,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "npm start"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.4",
