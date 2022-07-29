@@ -424,6 +424,9 @@ export class AppComponent implements OnInit {
       this.treegrid.grid.editModule.addRecord();
       // this.treegrid.grid.editModule.addRecord();
       // this.editSettings.allowAdding=false;
+    } else if (args.item.id === 'addchild') {
+      this.treegrid.editSettings.newRowPosition = "Child";  
+      this.treegrid.addRecord();  
     } else if (args.item.id === 'editrow') {
       this.treegrid.grid.editModule.startEdit();
     } else if (args.item.id === 'deleterow') {
