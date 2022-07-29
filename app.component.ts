@@ -12,6 +12,7 @@ import { sampleData } from './jsontreegriddata';
 import {
   TreeGridComponent,
   FreezeService,
+  FilterService,
   ReorderService,
   ColumnChooserService
 } from '@syncfusion/ej2-angular-treegrid';
@@ -33,11 +34,12 @@ import * as uuid from 'uuid';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [FreezeService, ReorderService,ColumnChooserService],
+  providers: [FreezeService, ReorderService,ColumnChooserService,FilterService],
 })
 export class AppComponent implements OnInit {
   public data: Object[] = [];
   public required: Object = {required:true};
+  public filterSettings: Object;
   @ViewChild('alertDialog')
   public alertDialog: DialogComponent;
   @ViewChild('delalertDialog')
@@ -149,6 +151,7 @@ export class AppComponent implements OnInit {
     //   });
 
     // this.data = key;
+    this.filterSettings = { type: 'FilterBar', hierarchyMode: 'Parent', mode: 'Immediate' };
     this.data = sampleData;
     this.contextMenuItems = [
       { text: 'Add Next', target: '.e-content', id: 'addnext' },
