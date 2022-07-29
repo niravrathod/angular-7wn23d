@@ -152,6 +152,7 @@ export class AppComponent implements OnInit {
     this.data = sampleData;
     this.contextMenuItems = [
       { text: 'Add Next', target: '.e-content', id: 'addnext' },
+      { text: 'Add Child', target: '.e-content', id: 'addchild' },
       { text: 'Edit Row', target: '.e-content', id: 'editrow' },
       { text: 'Delete Row', target: '.e-content', id: 'deleterow' },
       { text: 'Collapse the Row', target: '.e-content', id: 'collapserow' },
@@ -229,7 +230,20 @@ export class AppComponent implements OnInit {
           )
         )
       ) {
-        arg.cancel = true;
+        // arg.cancel = true;
+        document
+        .querySelectorAll('li#addnext')[0]
+        .setAttribute('style', 'display: block;');
+        document
+        document
+        .querySelectorAll('li#addchild')[0]
+        .setAttribute('style', 'display: block;');
+        document
+        .querySelectorAll('li#editrow')[0]
+        .setAttribute('style', 'display: block;');
+        document
+        .querySelectorAll('li#deleterow')[0]
+        .setAttribute('style', 'display: block;');
       } else {
         let flag: boolean = getValue(
           'expanded',
@@ -238,6 +252,10 @@ export class AppComponent implements OnInit {
         let val: string = flag ? 'none' : 'block';
         document
         .querySelectorAll('li#addnext')[0]
+        .setAttribute('style', 'display: block;');
+        document
+        document
+        .querySelectorAll('li#addchild')[0]
         .setAttribute('style', 'display: block;');
         document
         .querySelectorAll('li#editrow')[0]
