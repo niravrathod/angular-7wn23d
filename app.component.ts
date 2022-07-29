@@ -439,6 +439,7 @@ export class AppComponent implements OnInit {
       // let row: Element = elem.closest('.e-row');
       // let uid: string = row && row.getAttribute('data-uid');
       // console.log(this.treegrid.grid.getRowObjectFromUID(uid));
+      this.treegrid.editSettings.newRowPosition = "Below";  
       this.treegrid.grid.editModule.addRecord();
       // this.treegrid.grid.editModule.addRecord();
       // this.editSettings.allowAdding=false;
