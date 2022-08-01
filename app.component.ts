@@ -234,9 +234,9 @@ export class AppComponent implements OnInit {
         )
       ) {
         // arg.cancel = true;
-        document
-        .querySelectorAll('li#addnext')[0]
-        .setAttribute('style', 'display: block;');
+        // document
+        // .querySelectorAll('li#addnext')[0]
+        // .setAttribute('style', 'display: block;');
         document
         document
         .querySelectorAll('li#addchild')[0]
