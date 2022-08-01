@@ -172,6 +172,7 @@ export class AppComponent implements OnInit {
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
       { text: 'Show/Hide Columns', target: '.e-headercontent', id: 'show_hide_columns' },
       { text: 'Lock Column', target: '.e-headercontent', id: 'lock_column' },
+      { text: 'Unlock Column', target: '.e-headercontent', id: 'unlock_column' },
     ];
     this.editSettings ={ allowEditing: true,allowEditOnDblClick:false,allowAdding: true, allowDeleting: true,showDeleteConfirmDialog: true, mode:"Dialog",newRowPosition: 'Below'}; 
 
@@ -277,6 +278,7 @@ export class AppComponent implements OnInit {
           .setAttribute('style', 'display: ' + val + ';');
       }
     } else {
+      
       let len =
         this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
       document
@@ -288,9 +290,24 @@ export class AppComponent implements OnInit {
       document
         .querySelectorAll('li#show_hide_columns')[0]
         .setAttribute('style', 'display: block;');
-      document
-        .querySelectorAll('li#lock_column')[0]
+      
+      //   console.log(arg.column.field);
+      // this.treegrid.getColumnByField(args.column.field)['allowEditing'] = false;
+      // this.treegrid.getColumnByField(args.column.field)['allowAdding'] = false;
+      // this.treegrid.refreshColumns();
+      if(this.treegrid.getColumnByField(arg.column.field).allowAdding!==undefined && this.treegrid.getColumnByField(arg.column.field).allowEditing==false && this.treegrid.getColumnByField(arg.column.field).allowAdding==false)
+      {
+        document
+        .querySelectorAll('li#unlock_column')[0]
         .setAttribute('style', 'display: block;');
+      }
+      else
+      {
+
+        document
+          .querySelectorAll('li#lock_column')[0]
+          .setAttribute('style', 'display: block;');
+      }
         // console.log('hello');
         // console.log(arg.column.freeze);
 
@@ -568,8 +585,12 @@ export class AppComponent implements OnInit {
       this.treegrid.grid.columnChooserModule.openColumnChooser();
       // this.treegrid.grid.editModule.addRecord();
     } else if (args.item.id === 'lock_column') {
+      this.treegrid.getColumnByField(args.column.field)['allowAdding'] = false;
       this.treegrid.getColumnByField(args.column.field)['allowEditing'] = false;
-      this.treegrid.getColumnByField(args.column.field)['allowEditing'] = false;
+      this.treegrid.refreshColumns();
+    } else if (args.item.id === 'unlock_column') {
+      this.treegrid.getColumnByField(args.column.field)['allowAdding'] = true;
+      this.treegrid.getColumnByField(args.column.field)['allowEditing'] = true;
       this.treegrid.refreshColumns();
     }
   }
