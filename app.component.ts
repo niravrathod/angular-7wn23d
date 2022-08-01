@@ -14,7 +14,8 @@ import {
   FreezeService,
   FilterService,
   ReorderService,
-  ColumnChooserService
+  ColumnChooserService,
+  VirtualScrollService
 } from '@syncfusion/ej2-angular-treegrid';
 import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { BeforeOpenCloseEventArgs } from '@syncfusion/ej2-inputs';
@@ -34,7 +35,7 @@ import * as uuid from 'uuid';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [FreezeService, ReorderService,ColumnChooserService,FilterService],
+  providers: [FreezeService, ReorderService,ColumnChooserService,FilterService,VirtualScrollService],
 })
 export class AppComponent implements OnInit {
   public data: Object[] = [];
