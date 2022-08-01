@@ -171,6 +171,7 @@ export class AppComponent implements OnInit {
       },
       { text: 'Freeze Left', target: '.e-headercontent', id: 'freezeleft' },
       { text: 'Show/Hide Columns', target: '.e-headercontent', id: 'show_hide_columns' },
+      { text: 'Lock Column', target: '.e-headercontent', id: 'lock_column' },
     ];
     this.editSettings ={ allowEditing: true,allowEditOnDblClick:false,allowAdding: true, allowDeleting: true,showDeleteConfirmDialog: true, mode:"Dialog",newRowPosition: 'Below'}; 
 
@@ -286,6 +287,9 @@ export class AppComponent implements OnInit {
         .setAttribute('style', 'display: block;');
       document
         .querySelectorAll('li#show_hide_columns')[0]
+        .setAttribute('style', 'display: block;');
+      document
+        .querySelectorAll('li#lock_column')[0]
         .setAttribute('style', 'display: block;');
         // console.log('hello');
         // console.log(arg.column.freeze);
@@ -563,6 +567,10 @@ export class AppComponent implements OnInit {
       console.log(this.treegrid);
       this.treegrid.grid.columnChooserModule.openColumnChooser();
       // this.treegrid.grid.editModule.addRecord();
+    } else if (args.item.id === 'lock_column') {
+      this.treegrid.getColumnByField(args.column.field)['allowEditing'] = false;
+      this.treegrid.getColumnByField(args.column.field)['allowEditing'] = false;
+      this.treegrid.refreshColumns();
     }
   }
 
