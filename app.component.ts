@@ -291,17 +291,17 @@ export class AppComponent implements OnInit {
         .querySelectorAll('li#show_hide_columns')[0]
         .setAttribute('style', 'display: block;');
       
-      //   console.log(arg.column.field);
+        console.log(this.treegrid.getColumnByField(arg.column.field));
       // this.treegrid.getColumnByField(args.column.field)['allowEditing'] = false;
       // this.treegrid.getColumnByField(args.column.field)['allowAdding'] = false;
       // this.treegrid.refreshColumns();
-      if(this.treegrid.getColumnByField(arg.column.field).allowAdding!==undefined && this.treegrid.getColumnByField(arg.column.field).allowEditing==false && this.treegrid.getColumnByField(arg.column.field).allowAdding==false)
+      if(this.treegrid.getColumnByField(arg.column.field).allowAdding!==undefined && this.treegrid.getColumnByField(arg.column.field).allowEditing==false && this.treegrid.getColumnByField(arg.column.field).allowAdding==false && this.treegrid.getColumnByField(arg.column.field).isPrimaryKey===undefined)
       {
         document
         .querySelectorAll('li#unlock_column')[0]
         .setAttribute('style', 'display: block;');
       }
-      else
+      else if(this.treegrid.getColumnByField(arg.column.field).isPrimaryKey===undefined)
       {
 
         document
